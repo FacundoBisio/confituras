@@ -1,0 +1,301 @@
+/* Palmelita Premium Styles */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --primary-gold: #c5a059;
+    --primary-dark: #1a1a1a;
+    --secondary-dark: #2c2c2c;
+    --text-light: #f5f5f5;
+    --text-dark: #333333;
+    --accent-red: #8b0000;
+    --white: #ffffff;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    
+    --transition: all 0.3s ease;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Header */
+header {
+    width: 100%;
+    z-index: 1000;
+    background: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    position: sticky; /* Sticky instead of fixed to push content down or sat naturally */
+    top: 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: var(--font-body); /* Specific font from image seems simpler sans-serif */
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-transform: lowercase; /* "palmelita jam | products | ..." style */
+}
+
+/* Lang Switch */
+.lang-switch {
+    display: flex;
+    gap: 10px;
+}
+.lang-btn {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: grayscale(1);
+    transition: var(--transition);
+}
+.lang-btn.active, .lang-btn:hover {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    /* Height adjusted to fit video aspect or limited height */
+    height: 60vh; 
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Remove text overlay as requested ("arriba no se escriba nada") */
+.hero-content, .hero-overlay {
+    display: none; 
+}
+
+/* Intro Section */
+.intro {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: #fff;
+    font-style: italic;
+}
+
+.maestros-title {
+    font-family: 'Brush Script MT', 'Cursive', serif; /* Handwritten style "Master Confectioners" */
+    font-size: 2rem;
+    color: #555;
+}
+
+.canary-title {
+    font-family: 'Brush Script MT', 'Cursive', serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Products Section */
+.products {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Watermark Background */
+.products::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: url('assets/images/logo.png') no-repeat center center;
+    background-size: contain;
+    opacity: 0.05; /* Very subtle */
+    z-index: -1;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Force 2 columns */
+    gap: 4rem;
+    margin-top: 3rem;
+    max-width: 1000px; /* Constrain width slightly to keep cards from being too wide if wanted, or keep it responsive */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-card {
+    background: transparent;
+    text-align: center;
+    transition: var(--transition);
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-image {
+    height: 450px; /* Make them much larger as requested */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-image img {
+    max-height: 100%;
+    width: auto;
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.product-info h3 {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
+.product-info p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    background: #D10029; /* Deep Red */
+    color: var(--white);
+    padding: 4rem 2rem 2rem; /* Top padding for curve space */
+    margin-top: 5rem;
+}
+
+/* Top Curve SVG effect via clip-path or pseudo element */
+/* A simple curved border approach */
+footer::before {
+    content: '';
+    position: absolute;
+    top: -50px; /* Overlap above */
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #D10029;
+    border-radius: 50% 100% 0 0 / 100% 100% 0 0; /* Asymmetrical curve attempt */
+    /* A simpler consistent curve */
+    border-top-left-radius: 100% 100px;
+    z-index: -1;
+}
+
+/* Adjust footer content to be simpler */
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; 
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-image {
+        height: 350px;
+    }
+}
