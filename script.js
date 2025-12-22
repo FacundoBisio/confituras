@@ -74,6 +74,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // Default to ES
   setLanguage("es");
   document.getElementById("lang-es").classList.add("active");
+  // Lightbox Logic
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".close-lightbox");
+  const productImages = document.querySelectorAll(".product-image img");
+
+  productImages.forEach((img) => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  }
+
+  if (lightbox) {
+      lightbox.addEventListener("click", (e) => {
+        if (e.target !== lightboxImg) {
+            lightbox.style.display = "none";
+        }
+      });
+  }
 });
 
 function setLanguage(lang) {
