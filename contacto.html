@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Palmelita</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Palmelita Logo"></a>
+            </div>
+            <!-- Pipe separated lowercase nav -->
+            <div class="nav-links">
+                <a href="index.html#home" data-i18n="home">palmelita jam</a> |
+                <a href="index.html#products" data-i18n="products">products</a> |
+                <a href="contacto.html" class="active" data-i18n="contact">contact</a> |
+                <a href="noticias.html" data-i18n="news">news</a> |
+                <span style="color: #333; font-weight: normal;">canary islands natural paradise</span>
+            </div>
+            <div class="lang-switch">
+                <button id="lang-es" class="lang-btn active" title="Español"><img src="https://flagcdn.com/24x18/es.png" alt="ES" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-en" class="lang-btn" title="English"><img src="https://flagcdn.com/24x18/gb.png" alt="EN" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-de" class="lang-btn" title="Deutsch"><img src="https://flagcdn.com/24x18/de.png" alt="DE" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-fr" class="lang-btn" title="Français"><img src="https://flagcdn.com/24x18/fr.png" alt="FR" style="width: 20px; vertical-align: middle;"></button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="contact-container">
+        <!-- Left Side: Title & Info -->
+        <div class="contact-info">
+            <h2 data-i18n="contact_title">¡Ponte en contacto<br>con nosotros<br>rellenando el formulario!</h2>
+            <!-- You can add more info here like address or phone if needed, but keeping it simple as per request -->
+        </div>
+
+        <!-- Vertical Line -->
+        <div class="separator"></div>
+
+        <!-- Right Side: Form -->
+        <div class="contact-form">
+            <form action="#" method="POST"> <!-- Placeholder action -->
+                <div class="form-group">
+                    <label for="email" data-i18n="contact_email">E-MAIL DE CONTACTO</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" data-i18n="contact_name">NOMBRE</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" data-i18n="contact_message">COMENTARIO</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" onclick="alert('Funcionalidad de envío en desarrollo.'); return false;" data-i18n="contact_submit">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+           <a href="contacto.html">Contact</a> |
+           <a href="#">Distributors - Professionals</a> |
+           <a href="#">Legal Conditions</a>
+        </div>
+        <p class="copyright" style="margin-top: 1rem;">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

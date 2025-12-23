@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Palmelita</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Palmelita Logo"></a>
+            </div>
+            <!-- Pipe separated lowercase nav -->
+            <div class="nav-links">
+                <a href="index.html#home" data-i18n="home">palmelita jam</a> |
+                <a href="index.html#products" data-i18n="products">products</a> |
+                <a href="contacto.html" data-i18n="contact">contact</a> |
+                <a href="noticias.html" class="active" data-i18n="news">news</a> |
+                <span style="color: #333; font-weight: normal;">canary islands natural paradise</span>
+            </div>
+            <div class="lang-switch">
+                <button id="lang-es" class="lang-btn active" title="Español"><img src="https://flagcdn.com/24x18/es.png" alt="ES" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-en" class="lang-btn" title="English"><img src="https://flagcdn.com/24x18/gb.png" alt="EN" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-de" class="lang-btn" title="Deutsch"><img src="https://flagcdn.com/24x18/de.png" alt="DE" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-fr" class="lang-btn" title="Français"><img src="https://flagcdn.com/24x18/fr.png" alt="FR" style="width: 20px; vertical-align: middle;"></button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="news-container">
+        <!-- News Item 1 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_1_title">Palmelita seleccionada como producto local para Madrid Fusión 2023</h3>
+            <div class="news-meta" data-i18n="news_1_meta">Diario de Avisos</div>
+            <span class="news-date" data-i18n="news_1_date">Miércoles, 18 de enero de 2023</span>
+            <p class="news-excerpt" data-i18n="news_1_excerpt">La gastronomía de Candelaria estará presente en Madrid Fusión...</p>
+        </article>
+
+        <!-- News Item 2 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_2_title">Palmelita seleccionada para Gran Feria de Alimentación de España El Corte Inglés</h3>
+            <div class="news-meta" data-i18n="news_2_meta">Diario Crítico, Salud y Consumo</div>
+            <span class="news-date" data-i18n="news_2_date">Miércoles, 04 de marzo de 2022</span>
+            <p class="news-excerpt" data-i18n="news_2_excerpt">El Corte Inglés inaugura la Gran Feria de la Alimentación en el marco de su 75 Aniversario...</p>
+        </article>
+
+        <!-- News Item 3 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_3_title">«De Bajamar al corazón de Europa»</h3>
+            <div class="news-meta" data-i18n="news_3_meta">Diario de Avisos</div>
+            <span class="news-date" data-i18n="news_3_date">Domingo, 21 de junio de 2015</span>
+            <p class="news-excerpt" data-i18n="news_3_excerpt">Confituras Palmelita da el salto a Alemania con unos productos de gran calidad...</p>
+        </article>
+
+        <!-- News Item 4 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_4_title">«Palmelita comienza a exportar sus confituras a Alemania»</h3>
+            <div class="news-meta" data-i18n="news_4_meta">La Opinión de Tenerife</div>
+            <span class="news-date" data-i18n="news_4_date">Viernes, 19 de junio de 2015</span>
+            <p class="news-excerpt" data-i18n="news_4_excerpt">...Confituras Palmelita fue creada en 1968 por el maestro pastelero Werner Bittermann (1928-2014) en su pequeño obrador...</p>
+        </article>
+
+        <!-- Co-financing Section -->
+        <div class="cofinance-section">
+            <p data-i18n="cofinance_text">Proyecto cofinanciado por el Fondo Europeo de Desarrollo Regional (FEDER)</p>
+            <div class="cofinance-logos">
+                <!-- Placeholders or text representation if images not available, or use the logo if appropriate -->
+                 <!-- Assuming logos are part of the footer or separate assets. Using text for now or simple img tags if I had references. 
+                      I will use a placeholder text block or just comment. The user image showed logos. -->
+                 <span>[Gobierno de Canarias]</span>
+                 <span>[Canarias Objetivo de Progreso]</span>
+                 <span>[Unión Europea - FEDER]</span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+           <a href="contacto.html">Contact</a> |
+           <a href="#">Distributors - Professionals</a> |
+           <a href="#">Legal Conditions</a>
+        </div>
+        <p class="copyright" style="margin-top: 1rem;">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
