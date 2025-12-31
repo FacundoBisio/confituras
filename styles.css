@@ -285,18 +285,144 @@ nav {
     width: auto;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 2000;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-dark);
+    transition: var(--transition);
+}
+
+/* Splash Page Styles */
+body.splash-page {
+    overflow: hidden; /* Prevent scrolling on splash if desired */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    flex-direction: column;
+}
+
+body.splash-page header,
+body.splash-page footer {
+    /* Keep header/footer visible (or header at least) */
+    position: absolute;
+    width: 100%;
+}
+
+body.splash-page header {
+    top: 0;
+}
+
+body.splash-page footer {
+    bottom: 0;
+    display: none; 
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    padding-top: 80px; /* Space for navbar */
+    text-align: center;
+}
+
+.splash-video-wrapper {
+    width: 80%; /* "sin agrandar" - not full width */
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optional: distinct look */
+    border-radius: 10px; /* Optional: soft edges */
+    overflow: hidden;
+}
+
+.splash-video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.splash-text {
+    margin-top: 2rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    animation: fadeInUp 1s ease-out;
+}
+
+.splash-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 10px 30px;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.splash-btn:hover {
+    background: var(--accent-red);
+    color: #fff;
+}
+
 .nav-links {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
 }
 
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
 .nav-links a {
-    font-family: var(--font-body); /* Specific font from image seems simpler sans-serif */
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 700;
     color: var(--primary-dark);
-    text-transform: lowercase; /* "palmelita jam | products | ..." style */
+    text-transform: lowercase; 
+}
+
+/* Desktop Separator */
+@media (min-width: 769px) {
+    .nav-links li:not(:last-child)::after {
+        content: "|";
+        margin-left: 0.5rem;
+        color: var(--primary-dark);
+        opacity: 0.7;
+    }
+    /* The tagline span is strictly not an LI in current structure, 
+       but if moved inside LI it follows rules. 
+       If kept outside as span, it needs care.
+       I will assume the span becomes an li or stays outside the ul.
+       Let's put everything in LI for consistency.
+    */
 }
 
 /* Lang Switch */
@@ -536,11 +662,102 @@ footer::before {
     }
 }
 
+/* Reveal Effect for Products */
+#products-reveal-section {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+#products-reveal-section.visible {
+    max-height: 4000px; /* Large enough to fit content */
+    opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; 
+    /* Mobile Nav Layout: Logo - Flags - Hamburger */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Allow menu to drop if needed, though we use fixed/absolute */
     }
+
+    .logo {
+        order: 1;
+        flex: 0 0 auto;
+    }
+
+    .lang-switch {
+        order: 2;
+        flex: 1; /* Take up available space to center items */
+        display: flex;
+        justify-content: center; /* Center the flags */
+        margin: 0;
+        z-index: 2001; /* Ensure above menu if needed */
+    }
+
+    .hamburger {
+        order: 3;
+        flex: 0 0 auto;
+        display: flex;
+    }
+
+    /* Mobile Menu Overlay */
+    .nav-links {
+        position: fixed;
+        right: -100%; /* Slide out by default */
+        top: 80px; /* Below header approx */
+        height: calc(100vh - 80px);
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* gap: 2rem; - moved to ul gap */
+        transition: var(--transition);
+        z-index: 1999;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        padding: 2rem;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .nav-links li::after {
+        content: none !important; /* Force hide separator on mobile */
+        display: none;
+    }
+    
+    .nav-links li {
+        display: block;
+        margin: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Larger text for mobile */
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Animate Hamburger */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+    
     .hero h1 {
         font-size: 2.5rem;
     }

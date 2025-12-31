@@ -2,11 +2,14 @@ const translations = {
     es: {
         home: "mermeladas palmelita",
         products: "productos",
+        our_products: "Nuestros Productos",
         about: "nosotros",
         contact: "contacto",
         news: "noticias",
         hero_title: "Maestros Confiteros",
         hero_subtitle: "Islas Canarias - Desde 1968",
+        splash_welcome: "Bienvenido al Paraíso Natural",
+        enter_site: "Entrar",
         intro_title: "Tradición y Sabor",
         intro_text: "Elaboramos nuestras mermeladas seleccionando las mejores frutas frescas de Canarias. Sin conservantes ni colorantes, solo fruta y azúcar para conseguir un sabor auténtico.",
         prod_kiwi: "Kiwi",
@@ -52,11 +55,14 @@ const translations = {
     en: {
         home: "palmelita jam",
         products: "products",
+        our_products: "Our Products",
         about: "about us",
         contact: "contact",
         news: "news",
         hero_title: "Master Confectioners",
         hero_subtitle: "Canary Islands - Since 1968",
+        splash_welcome: "Welcome to the Natural Paradise",
+        enter_site: "Enter",
         intro_title: "Tradition and Flavor",
         intro_text: "We make our jams selecting the best fresh fruits from the Canary Islands. No preservatives or colorings, just fruit and sugar to achieve an authentic taste.",
         prod_kiwi: "Kiwi",
@@ -102,11 +108,14 @@ const translations = {
     de: {
         home: "palmelita konfitüre",
         products: "produkte",
+        our_products: "Unsere Produkte",
         about: "über uns",
         contact: "kontakt",
         news: "nachrichten",
         hero_title: "Konditormeister",
         hero_subtitle: "Kanarische Inseln - Seit 1968",
+        splash_welcome: "Willkommen im Naturparadies",
+        enter_site: "Eintreten",
         intro_title: "Tradition und Geschmack",
         intro_text: "Wir stellen unsere Konfitüren aus den besten frischen Früchten der Kanarischen Inseln her.",
         prod_kiwi: "Kiwi",
@@ -152,11 +161,14 @@ const translations = {
     fr: {
         home: "confiture palmelita",
         products: "produits",
+        our_products: "Nos Produits",
         about: "à propos",
         contact: "contact",
         news: "nouvelles",
         hero_title: "Maîtres Confiseurs",
         hero_subtitle: "Îles Canaries - Depuis 1968",
+        splash_welcome: "Bienvenue au Paradis Naturel",
+        enter_site: "Entrer",
         intro_title: "Tradition et Saveur",
         intro_text: "Nous fabriquons nos confitures en sélectionnant les meilleurs fruits frais des îles Canaries.",
         prod_kiwi: "Kiwi",
@@ -244,6 +256,59 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
   }
+
+  // Hamburger Menu Logic
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  if (hamburger && navLinks) {
+      hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+          hamburger.classList.toggle("active");
+      });
+  }
+
+  // Reveal Products Logic (Index Page)
+  const revealBtn = document.getElementById("reveal-products-btn");
+  const revealSection = document.getElementById("products-reveal-section");
+
+  // Function to reveal
+  const revealProducts = (e) => {
+    if (revealSection) {
+        if(e) e.preventDefault();
+        revealSection.classList.add("visible");
+        // Smooth scroll to the section
+        setTimeout(() => {
+            revealSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+    }
+  };
+
+  if (revealBtn) {
+      revealBtn.addEventListener("click", revealProducts);
+  }
+
+  // Also enable "Products" link in nav to trigger reveal ONLY on index.html
+  const productLinks = document.querySelectorAll('a[href="productos.html"]'); // Selector might need adjustment if href is different
+  
+  // If we are on index.html, hijack the link
+  if (document.getElementById("products-reveal-section")) {
+      productLinks.forEach(link => {
+          // If the link text is "products" or similar data-i18n
+          if(link.getAttribute("data-i18n") === "products" || link.textContent.toLowerCase().includes("products") || link.textContent.toLowerCase().includes("productos")) {
+              link.addEventListener("click", (e) => {
+                  e.preventDefault();
+                  revealProducts();
+                  // Close mobile menu if open
+                  if(navLinks && navLinks.classList.contains("active")) {
+                      navLinks.classList.remove("active");
+                      hamburger.classList.remove("active");
+                  }
+              });
+          }
+      });
+  }
+
 });
 
 function setLanguage(lang) {
