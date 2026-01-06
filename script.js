@@ -22,6 +22,18 @@ const translations = {
         prod_naranja: "Naranja",
         prod_pimiento: "Pimiento",
         prod_limon: "Limón",
+        // Product Descriptions
+        desc_papaya_orange: "Mermelada Extra de Papaya y Naranja 335 g",
+        desc_papaya_orange_diet: "Mermelada Extra de Papaya y Naranja - Diet 335 g",
+        desc_mango: "Mermelada Extra de Mango 335 g",
+        desc_kiwi: "Mermelada Extra de Kiwi 335 g",
+        desc_guayaba: "Mermelada Extra de Guayaba 335 g",
+        desc_pina: "Mermelada Extra de Piña 335 g",
+        desc_fresa: "Mermelada Extra de Fresa 335 g",
+        desc_naranja: "Mermelada Extra de Naranja 335 g",
+        desc_pimiento: "Mermelada Extra de Pimiento 335 g",
+        desc_limon: "Mermelada Extra de Limón 335 g",
+
         // Footer
         footer_contact: "Contacto",
         footer_distributors: "Distribuidores - Profesionales",
@@ -75,6 +87,18 @@ const translations = {
         prod_naranja: "Orange",
         prod_pimiento: "Pepper",
         prod_limon: "Lemon",
+        // Product Descriptions
+        desc_papaya_orange: "Extra Jam Palmelita - Pawpaw - Orange 335 g",
+        desc_papaya_orange_diet: "Extra Jam Palmelita - Pawpaw - Orange - Diet 335 g",
+        desc_mango: "Extra Jam Palmelita - Mango 335 g",
+        desc_kiwi: "Extra Jam Palmelita - Kiwi 335 g",
+        desc_guayaba: "Extra Jam Palmelita - Guava 335 g",
+        desc_pina: "Extra Jam Palmelita - Pineapple 335 g",
+        desc_fresa: "Extra Jam Palmelita - Strawberry 335 g",
+        desc_naranja: "Extra Jam Palmelita - Orange 335 g",
+        desc_pimiento: "Extra Jam Palmelita - Pepper 335 g",
+        desc_limon: "Extra Jam Palmelita - Lemon 335 g",
+
         // Footer
         footer_contact: "Contact",
         footer_distributors: "Distributors - Professionals",
@@ -128,6 +152,18 @@ const translations = {
         prod_naranja: "Orange",
         prod_pimiento: "Poivron",
         prod_limon: "Citron",
+        // Product Descriptions
+        desc_papaya_orange: "Confiture Extra Palmelita - Papaye - Orange 335 g",
+        desc_papaya_orange_diet: "Confiture Extra Palmelita - Papaye - Orange - Diète 335 g",
+        desc_mango: "Confiture Extra Palmelita - Mangue 335 g",
+        desc_kiwi: "Confiture Extra Palmelita - Kiwi 335 g",
+        desc_guayaba: "Confiture Extra Palmelita - Goyave 335 g",
+        desc_pina: "Confiture Extra Palmelita - Ananas 335 g",
+        desc_fresa: "Confiture Extra Palmelita - Fraise 335 g",
+        desc_naranja: "Confiture Extra Palmelita - Orange 335 g",
+        desc_pimiento: "Confiture Extra Palmelita - Poivron 335 g",
+        desc_limon: "Confiture Extra Palmelita - Citron 335 g",
+
         // Footer
         footer_contact: "Contact",
         footer_distributors: "Distributeurs - Professionnels",
@@ -181,6 +217,18 @@ const translations = {
         prod_naranja: "Orange",
         prod_pimiento: "Paprika",
         prod_limon: "Zitrone",
+        // Product Descriptions
+        desc_papaya_orange: "Extra Konfitüre Palmelita - Papaya - Orange 335 g",
+        desc_papaya_orange_diet: "Extra Konfitüre Palmelita - Papaya - Orange - Diät 335 g",
+        desc_mango: "Extra Konfitüre Palmelita - Mango 335 g",
+        desc_kiwi: "Extra Konfitüre Palmelita - Kiwi 335 g",
+        desc_guayaba: "Extra Konfitüre Palmelita - Guave 335 g",
+        desc_pina: "Extra Konfitüre Palmelita - Ananas 335 g",
+        desc_fresa: "Extra Konfitüre Palmelita - Erdbeere 335 g",
+        desc_naranja: "Extra Konfitüre Palmelita - Orange 335 g",
+        desc_pimiento: "Extra Konfitüre Palmelita - Paprika 335 g",
+        desc_limon: "Extra Konfitüre Palmelita - Zitrone 335 g",
+
         // Footer
         footer_contact: "Kontakt",
         footer_distributors: "Händler - Fachleute",
@@ -215,20 +263,26 @@ const translations = {
 
 document.addEventListener("DOMContentLoaded", () => {
     const langBtns = document.querySelectorAll(".lang-btn");
+    const currentLang = localStorage.getItem("palmelita_lang") || "es"; // Persist language preference
 
     langBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             const lang = btn.id.split("-")[1];
             setLanguage(lang);
-            langBtns.forEach((b) => b.classList.remove("active"));
-            btn.classList.add("active");
+            localStorage.setItem("palmelita_lang", lang);
+            updateActiveButton(lang);
         });
     });
 
-    // Default a ES
-    setLanguage("es");
-    const esBtn = document.getElementById("lang-es");
-    if(esBtn) esBtn.classList.add("active");
+    // Init Language
+    setLanguage(currentLang);
+    updateActiveButton(currentLang);
+
+    function updateActiveButton(lang) {
+        langBtns.forEach((b) => b.classList.remove("active"));
+        const activeBtn = document.getElementById(`lang-${lang}`);
+        if(activeBtn) activeBtn.classList.add("active");
+    }
 
     // Lógica de Lightbox
     const lightbox = document.getElementById("lightbox");
@@ -236,11 +290,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".close-lightbox");
     const productImages = document.querySelectorAll(".product-image img");
 
+    // Crear elemento de descripción en el lightbox si no existe
+    if (lightbox && !document.getElementById("lightbox-desc")) {
+        const descP = document.createElement("p");
+        descP.id = "lightbox-desc";
+        descP.style.color = "white";
+        descP.style.textAlign = "center";
+        descP.style.fontSize = "1.2rem";
+        descP.style.marginTop = "1rem";
+        descP.style.fontFamily = "var(--font-heading)";
+        lightbox.appendChild(descP);
+    }
+    const lightboxDesc = document.getElementById("lightbox-desc");
+
     productImages.forEach((img) => {
         img.addEventListener("click", () => {
             if (lightbox && lightboxImg) {
                 lightbox.style.display = "flex";
+                lightbox.style.flexDirection = "column"; // Ensure column layout
                 lightboxImg.src = img.src;
+                
+                // Get description key from data attribute on parent card or image
+                const card = img.closest(".product-card");
+                if (card) {
+                    const titleElement = card.querySelector("h3[data-i18n]");
+                    if (titleElement) {
+                        const titleKey = titleElement.getAttribute("data-i18n");
+                        // Construct the desc key from prod key: prod_x -> desc_x
+                        const descKey = titleKey.replace("prod_", "desc_");
+                        
+                        // Set text based on current language
+                        const currentLang = localStorage.getItem("palmelita_lang") || "es";
+                        if (translations[currentLang] && translations[currentLang][descKey]) {
+                            lightboxDesc.textContent = translations[currentLang][descKey];
+                        } else {
+                            lightboxDesc.textContent = "";
+                        }
+                        // Store the key so we can update it if lang changes while lightbox is open
+                        lightboxDesc.setAttribute("data-i18n", descKey);
+                    }
+                }
             }
         });
     });
@@ -253,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (lightbox) {
         lightbox.addEventListener("click", (e) => {
-            if (e.target !== lightboxImg) {
+            if (e.target !== lightboxImg && e.target !== lightboxDesc) {
                 lightbox.style.display = "none";
             }
         });
@@ -270,41 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Lógica para revelar productos y scroll suave
-    const revealBtn = document.getElementById("reveal-products-btn");
-    const revealSection = document.getElementById("products-reveal-section");
-
-    const revealProducts = (e) => {
-        if (revealSection) {
-            if(e) e.preventDefault();
-            revealSection.classList.add("visible");
-            // Scroll suave a la sección de productos
-            setTimeout(() => {
-                revealSection.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 100);
-        }
-    };
-
-    if (revealBtn) {
-        revealBtn.addEventListener("click", revealProducts);
-    }
-
-    // Hacer que el link de "Products" en el nav también dispare el scroll en el landing
-    const navProductLinks = document.querySelectorAll('a[href="productos.html"], a[data-i18n="products"]');
-    
-    if (revealSection) {
-        navProductLinks.forEach(link => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                revealProducts();
-                // Cerrar menú móvil si está abierto
-                if(navLinks && navLinks.classList.contains("active")) {
-                    navLinks.classList.remove("active");
-                    if(hamburger) hamburger.classList.remove("active");
-                }
-            });
-        });
-    }
+    // Removed Splash/Reveal listeners since feature is removed
 });
 
 function setLanguage(lang) {

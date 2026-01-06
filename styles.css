@@ -11,9 +11,30 @@
   --white: #ffffff;
 
   --font-heading: "Playfair Display", serif;
+  --font-canary: "Playfair Display", serif; /* Corrected from Brush Script */
   --font-body: "Lato", sans-serif;
 
   --transition: all 0.3s ease;
+}
+
+/* Reusable Watermark Background */
+.watermark-bg {
+  position: relative;
+  z-index: 1;
+}
+
+.watermark-bg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%; /* Increased from 80% */
+  height: 110%; /* Increased from 80% */
+  background: url("assets/images/logo.png") no-repeat center center;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: -1;
 }
 
 /* Reset & Base */
@@ -470,16 +491,18 @@ body.splash-page footer {
 }
 
 .maestros-title {
-  font-family: "Brush Script MT", "Cursive", serif;
-  font-size: 2rem;
-  color: #555;
+  font-family: var(--font-canary);
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: #1a1a1a;
+  font-style: italic;
 }
 
 .canary-title {
-  font-family: "Brush Script MT", "Cursive", serif;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #000;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-style: italic;
+  color: #1a1a1a;
 }
 
 /* Products Section */
@@ -634,16 +657,15 @@ footer::before {
   }
 }
 
-/* Reveal Effect for Products */
+/* Reveal Effect for Products - Always Visible Now */
 #products-reveal-section {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 1s ease-in-out, opacity 1s ease-in-out;
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
 }
 
 #products-reveal-section.visible {
-  max-height: 4000px;
+  max-height: none;
   opacity: 1;
 }
 

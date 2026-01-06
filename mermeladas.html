@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Palmelita</title>
+    <title>Mermeladas Palmelita</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
@@ -26,7 +26,7 @@
                 <ul>
                     <li><a href="mermeladas.html" data-i18n="home">palmelita jam</a></li>
                     <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
-                    <li><a href="contacto.html" class="active" data-i18n="contact">contact</a></li>
+                    <li><a href="contacto.html" data-i18n="contact">contact</a></li>
                     <li><a href="noticias.html" data-i18n="news">news</a></li>
                     <li><a href="canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canary islands natural paradise</a></li>
                 </ul>
@@ -40,48 +40,48 @@
         </nav>
     </header>
 
+    <div class="watermark-bg" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
+        
     <section class="intro">
         <div class="maestros-title">Maestros Confiteros</div>
-        <div class="canary-title">Contact <span style="font-size: 1.5rem; display:block; margin-top: -10px;">desde 1968</span></div>
+        <div class="canary-title">Islas Canarias <span style="font-size: 1.5rem; display:block; margin-top: -10px;">desde 1968</span></div>
+        <div style="margin-top: 1.5rem; font-family: var(--font-body); font-weight: bold; font-size: 1.2rem; font-style: normal;">
+            <span style="border: 2px solid #000; padding: 0.2rem 1rem; border-radius: 20px; box-shadow: 2px 2px 0px #ccc;">sobre nosotros</span>
+            <span style="margin: 0 1rem;">|</span>
+            <a href="puntos_venta.html" style="color: #000; text-decoration: none;">puntos de venta</a>
+        </div>
     </section>
 
-    <section class="contact-container">
-        <!-- Left Side: Title & Info -->
-        <div class="contact-info">
-            <h2 data-i18n="contact_title">¡Ponte en contacto<br>con nosotros<br>rellenando el formulario!</h2>
-            <!-- You can add more info here like address or phone if needed, but keeping it simple as per request -->
-        </div>
-
-        <!-- Vertical Line -->
-        <div class="separator"></div>
-
-        <!-- Right Side: Form -->
-        <div class="contact-form">
-            <form action="#" method="POST"> <!-- Placeholder action -->
-                <div class="form-group">
-                    <label for="email" data-i18n="contact_email">E-MAIL DE CONTACTO</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
+        <!-- Content Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            
+            <!-- Text Column -->
+            <div style="font-family: var(--font-body); color: #333; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;">
+                    <strong>Confituras Palmelita</strong> nace en 1968 de la mano del maestro pastelero Werner Bittermann en su pequeño obrador de Bajamar en Tenerife.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    El profundo conocimiento de recetas centroeuropeas tradicionales unidas a la excelentes frutas que se dan en Canarias hicieron que este producto destacara desde el primer momento por su alta calidad.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    Desde entonces, la filosofía de producto no ha cambiado, solo las mejores selecciones, sin conservantes ni colorantes, con frutas tropicales, de Canarias y de temporada como lo son la guayaba, el mango, la piña, la maracuyá, el higo pico, el higo tinto, etc. Un producto excelente, un producto de Canarias.
+                </p>
                 
-                <div class="form-group">
-                    <label for="name" data-i18n="contact_name">NOMBRE</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
+                <h3 style="font-family: 'Playfair Display', serif; color: #d10029; font-size: 2rem; margin-top: 2rem; text-align: right; font-style: italic;">
+                    «mucho más...<br>que una mermelada»
+                </h3>
+            </div>
 
-                <div class="form-group">
-                    <label for="message" data-i18n="contact_message">COMENTARIO</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
+            <!-- Image Column -->
+            <div style="display: flex; justify-content: center;">
+                <img src="assets/images/producto-info.jpg" alt="Mermeladas Palmelita Bodegón" style="max-width: 100%; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            </div>
 
-                <button type="submit" class="submit-btn" onclick="alert('Funcionalidad de envío en desarrollo.'); return false;" data-i18n="contact_submit">ENVIAR</button>
-            </form>
         </div>
-    </section>
+    </div>
 
     <footer id="contact">
         <div class="footer-content">
-            <style>
-            </style>
            <a href="contacto.html" data-i18n="footer_contact">Contact</a> |
            <a href="#" data-i18n="footer_distributors">Distributors - Professionals</a> |
            <a href="#" data-i18n="footer_legal">Legal Conditions</a>

@@ -24,11 +24,11 @@
             <!-- Pipe separated lowercase nav -->
             <div class="nav-links" id="nav-links">
                 <ul>
-                    <li><a href="index.html" data-i18n="home">palmelita jam</a></li>
-                    <li><a href="productos.html" data-i18n="products">products</a></li>
+                    <li><a href="mermeladas.html" data-i18n="home">palmelita jam</a></li>
+                    <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
                     <li><a href="contacto.html" data-i18n="contact">contact</a></li>
                     <li><a href="noticias.html" class="active" data-i18n="news">news</a></li>
-                    <li><span style="color: #333; font-weight: normal;">canary islands natural paradise</span></li>
+                    <li><a href="canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canary islands natural paradise</a></li>
                 </ul>
             </div>
             <div class="lang-switch">
@@ -39,6 +39,11 @@
             </div>
         </nav>
     </header>
+
+    <section class="intro">
+        <div class="maestros-title">Maestros Confiteros</div>
+        <div class="canary-title">Noticias <span style="font-size: 1.5rem; display:block; margin-top: -10px;">desde 1968</span></div>
+    </section>
 
     <section class="news-container">
         <!-- News Item 1 -->
@@ -74,15 +79,10 @@
         </article>
 
         <!-- Co-financing Section -->
-        <div class="cofinance-section">
-            <p data-i18n="cofinance_text">Proyecto cofinanciado por el Fondo Europeo de Desarrollo Regional (FEDER)</p>
-            <div class="cofinance-logos">
-                <!-- Placeholders or text representation if images not available, or use the logo if appropriate -->
-                 <!-- Assuming logos are part of the footer or separate assets. Using text for now or simple img tags if I had references. 
-                      I will use a placeholder text block or just comment. The user image showed logos. -->
-                 <span>[Gobierno de Canarias]</span>
-                 <span>[Canarias Objetivo de Progreso]</span>
-                 <span>[Unión Europea - FEDER]</span>
+        <div class="cofinance-section" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: center;">
+            <p data-i18n="cofinance_text" style="color: #777; font-size: 0.9rem; margin-bottom: 2rem;">Proyecto cofinanciado por el Fondo Europeo de Desarrollo Regional (FEDER)</p>
+            <div class="cofinance-logos" style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                 <img src="assets/images/gobCanarias.png" alt="Gobierno de Canarias" style="height: 100px; width: auto; opacity: 0.8;">
             </div>
         </div>
     </section>

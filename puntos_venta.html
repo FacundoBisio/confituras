@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Palmelita</title>
+    <title>Puntos de Venta - Palmelita</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
@@ -21,12 +21,11 @@
                 <span></span>
             </button>
 
-            <!-- Pipe separated lowercase nav -->
             <div class="nav-links" id="nav-links">
                 <ul>
                     <li><a href="mermeladas.html" data-i18n="home">palmelita jam</a></li>
                     <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
-                    <li><a href="contacto.html" class="active" data-i18n="contact">contact</a></li>
+                    <li><a href="contacto.html" data-i18n="contact">contact</a></li>
                     <li><a href="noticias.html" data-i18n="news">news</a></li>
                     <li><a href="canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canary islands natural paradise</a></li>
                 </ul>
@@ -40,48 +39,50 @@
         </nav>
     </header>
 
+    <div class="content-wrapper watermark-bg" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem; position: relative; min-height: 60vh;">
+        
+        <!-- Header Section -->
     <section class="intro">
         <div class="maestros-title">Maestros Confiteros</div>
-        <div class="canary-title">Contact <span style="font-size: 1.5rem; display:block; margin-top: -10px;">desde 1968</span></div>
-    </section>
-
-    <section class="contact-container">
-        <!-- Left Side: Title & Info -->
-        <div class="contact-info">
-            <h2 data-i18n="contact_title">¡Ponte en contacto<br>con nosotros<br>rellenando el formulario!</h2>
-            <!-- You can add more info here like address or phone if needed, but keeping it simple as per request -->
-        </div>
-
-        <!-- Vertical Line -->
-        <div class="separator"></div>
-
-        <!-- Right Side: Form -->
-        <div class="contact-form">
-            <form action="#" method="POST"> <!-- Placeholder action -->
-                <div class="form-group">
-                    <label for="email" data-i18n="contact_email">E-MAIL DE CONTACTO</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="name" data-i18n="contact_name">NOMBRE</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="message" data-i18n="contact_message">COMENTARIO</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn" onclick="alert('Funcionalidad de envío en desarrollo.'); return false;" data-i18n="contact_submit">ENVIAR</button>
-            </form>
+        <div class="canary-title">Islas Canarias <span style="font-size: 1.5rem; display:block; margin-top: -10px;">desde 1968</span></div>
+        <div style="margin-top: 1.5rem; font-family: var(--font-body); font-weight: bold; font-size: 1.2rem; font-style: normal;">
+            <a href="mermeladas.html" style="color: #000; text-decoration: none; margin: 0 1rem;">sobre nosotros</a>
+            <span>|</span>
+            <span style="border: 2px solid #000; padding: 0.2rem 1rem; border-radius: 20px; box-shadow: 2px 2px 0px #ccc; margin: 0 1rem;">puntos de venta</span>
         </div>
     </section>
+
+        <!-- Content -->
+        <div style="font-family: var(--font-body); color: #333; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto;">
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                Gracias a la imprescindible y estimada colaboración de las siguientes enseñas las mermeladas PALMELITA se distribuyen en las Islas Canarias en, por ejemplo:
+            </p>
+
+            <!-- Logos Grid -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                <img src="assets/images/logoPal.png" alt="Palmelita" style="height: 60px; width: auto;">
+                <img src="assets/images/logoCorte.png" alt="El Corte Inglés" style="height: 50px; width: auto;">
+                <img src="assets/images/logoSpars.png" alt="SPAR" style="height: 40px; width: auto;">
+                <img src="assets/images/logoHiper.png" alt="HiperDino" style="height: 40px; width: auto;">
+            </div>
+
+            <div style="width: 100%; height: 1px; background-color: #d10029; margin: 2rem 0;"></div>
+
+            <p style="font-size: 0.95rem; color: #555;">
+                En caso de que usted no encuentre CONFITURAS PALMELITA en su establecimiento de compra usual, le informaremos gustosamente de la localización de los puntos de venta más cercanos a su residencia habitual.
+            </p>
+            <p style="font-size: 0.95rem; color: #555;">
+                Solo tendrá que enviar un email, a través de nuestro formulario de contacto, indicando su dirección y código postal.
+            </p>
+
+             <h3 style="font-family: var(--font-heading); color: #e0e0e0; font-size: 4rem; margin-top: 2rem; text-align: center; font-style: italic; opacity: 0.3;">
+                desde 1968
+            </h3>
+        </div>
+    </div>
 
     <footer id="contact">
         <div class="footer-content">
-            <style>
-            </style>
            <a href="contacto.html" data-i18n="footer_contact">Contact</a> |
            <a href="#" data-i18n="footer_distributors">Distributors - Professionals</a> |
            <a href="#" data-i18n="footer_legal">Legal Conditions</a>
