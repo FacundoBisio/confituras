@@ -37,7 +37,7 @@ const translations = {
         // Footer
         footer_contact: "Contacto",
         footer_distributors: "Distribuidores - Profesionales",
-        footer_legal: "Aviso Legal",
+        footer_legal: "Condiciones Legales",
         footer_copyright: "© 2026 Palmelitas Jams / Sitios recomendados jam.palmelita.com",
         // Contact Page
         contact_title: "¡Ponte en contacto con nosotros rellenando el formulario!",
@@ -62,7 +62,11 @@ const translations = {
         news_4_meta: "La Opinión de Tenerife",
         news_4_date: "Viernes, 19 de junio de 2015",
         news_4_excerpt: "...Confituras Palmelita fue creada en 1968 por el maestro pastelero Werner Bittermann (1928-2014) en su pequeño obrador...",
-        cofinance_text: "Proyecto cofinanciado por el Fondo Europeo de Desarrollo Regional (FEDER)"
+        cofinance_text: "Proyecto cofinanciado por el Fondo Europeo de Desarrollo Regional (FEDER)",
+        // Distributors
+        distributors_intro_title: "Distribuidores - Profesionales",
+        distributors_text_1: "Si desea vender nuestras Mermeladas Palmelita en su tienda, no dude en contactarnos a través de nuestro formulario de contacto.",
+        distributors_text_2: "Nuestras Mermeladas Palmelita también se exportan fuera de las Islas Canarias. Si desea distribuir nuestras mermeladas en su región, contáctenos a través de este formulario de contacto."
     },
     en: {
         home: "palmelita jam",
@@ -127,7 +131,11 @@ const translations = {
         news_4_meta: "La Opinión de Tenerife",
         news_4_date: "Friday, June 19, 2015",
         news_4_excerpt: "...Confituras Palmelita was created in 1968 by master confectioner Werner Bittermann (1928-2014) in his small workshop...",
-        cofinance_text: "Project co-financed by the European Regional Development Fund (ERDF)"
+        cofinance_text: "Project co-financed by the European Regional Development Fund (ERDF)",
+        // Distributors
+        distributors_intro_title: "Distributors - Professionals",
+        distributors_text_1: "If you want to sell our Palmelita Jams in your shop, do not hesitate to contact us through our contact form.",
+        distributors_text_2: "Our Palmelita Jams are also exported outside the Canary Islands. If you want to distribute our jams in your region please contact us through this contact form."
     },
     fr: {
         home: "confiseries palmelita",
@@ -192,7 +200,11 @@ const translations = {
         news_4_meta: "La Opinión de Tenerife",
         news_4_date: "Vendredi 19 juin 2015",
         news_4_excerpt: "...Confituras Palmelita a été créée en 1968 par le maître confiseur Werner Bittermann (1928-2014) dans son petit atelier...",
-        cofinance_text: "Projet cofinancé par le Fonds Européen de Développement Régional (FEDER)"
+        cofinance_text: "Projet cofinancé par le Fonds Européen de Développement Régional (FEDER)",
+        // Distributors
+        distributors_intro_title: "Distributeurs - Professionnels",
+        distributors_text_1: "Si vous souhaitez vendre nos confitures Palmelita dans votre boutique, n'hésitez pas à nous contacter via notre formulaire de contact.",
+        distributors_text_2: "Nos confitures Palmelita sont également exportées hors des îles Canaries. Si vous souhaitez distribuer nos confitures dans votre région, veuillez nous contacter via ce formulaire."
     },
     de: {
         home: "palmelita konfitüren",
@@ -257,7 +269,11 @@ const translations = {
         news_4_meta: "La Opinión de Tenerife",
         news_4_date: "Freitag, 19. Juni 2015",
         news_4_excerpt: "...Confituras Palmelita wurde 1968 von Konditormeister Werner Bittermann (1928-2014) in seiner kleinen Werkstatt gegründet...",
-        cofinance_text: "Projekt kofinanziert durch den Europäischen Fonds für regionale Entwicklung (EFRE)"
+        cofinance_text: "Projekt kofinanziert durch den Europäischen Fonds für regionale Entwicklung (EFRE)",
+        // Distributors
+        distributors_intro_title: "Händler - Fachleute",
+        distributors_text_1: "Wenn Sie unsere Palmelita-Marmeladen in Ihrem Geschäft verkaufen möchten, zögern Sie nicht, uns über unser Kontaktformular zu kontaktieren.",
+        distributors_text_2: "Unsere Palmelita-Marmeladen werden auch außerhalb der Kanarischen Inseln exportiert. Wenn Sie unsere Marmeladen in Ihrer Region vertreiben möchten, kontaktieren Sie uns bitte über dieses Kontaktformular."
     }
 };
 
