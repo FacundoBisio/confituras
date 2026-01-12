@@ -40,7 +40,7 @@
         </nav>
     </header>
 
-    <div class="watermark-bg" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
+    <div class="responsive-wrapper watermark-bg">
         
     <section class="intro">
         <div class="maestros-title">Maestros Confiteros</div>
@@ -53,7 +53,7 @@
     </section>
 
         <!-- Content Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div class="responsive-grid-2">
             
             <!-- Text Column -->
             <div style="font-family: var(--font-body); color: #333; line-height: 1.8;">
@@ -73,8 +73,8 @@
             </div>
 
             <!-- Image Column -->
-            <div style="display: flex; justify-content: center;">
-                <img src="assets/images/producto-info.jpg" alt="Mermeladas Palmelita Bodegón" style="max-width: 100%; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            <div class="responsive-img-container">
+                <img src="assets/images/producto-info.jpg" alt="Mermeladas Palmelita Bodegón">
             </div>
 
         </div>
@@ -82,8 +82,8 @@
 
     <footer id="contact">
         <div class="footer-content">
-           <a href="contacto.html" data-i18n="footer_contact">Contact</a> |
-           <a href="distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> |
+           <a href="contacto.html" data-i18n="footer_contact">Contact</a> <span class="footer-pipe">|</span>
+           <a href="distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> <span class="footer-pipe">|</span>
            <a href="condiciones.html" data-i18n="footer_legal">Legal Conditions</a>
         </div>
         <p class="copyright" style="margin-top: 1rem;" data-i18n="footer_copyright">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>

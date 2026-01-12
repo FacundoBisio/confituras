@@ -39,7 +39,7 @@
         </nav>
     </header>
 
-    <div class="content-wrapper watermark-bg" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem; position: relative; min-height: 60vh;">
+    <div class="content-wrapper watermark-bg responsive-wrapper" style="min-height: 60vh;">
         
     <section class="intro">
         <div class="maestros-title">Maestros Confiteros</div>
@@ -63,7 +63,7 @@
             <div style="width: 100%; height: 2px; background-color: #d10029; margin: 2rem 0;"></div>
 
             <!-- Two Column Content -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+            <div class="responsive-grid-2" style="align-items: start;">
                 
                 <!-- Text Column -->
                 <div style="line-height: 1.6; font-size: 0.95rem;">
@@ -73,7 +73,7 @@
                 </div>
 
                 <!-- Video Thumbnail Column -->
-                <div style="display: flex; justify-content: center;">
+                <div class="responsive-img-container">
                    <a href="https://www.rtve.es/play/videos/a-pedir-de-boca/pedir-boca-frutas-tropicales-canarias/675883/" target="_blank" style="text-decoration: none; position: relative; display: block;">
                         <!-- Using producto-info.jpg as a placeholder for the video thumbnail, as requested "video que en realidad es una foto" -->
                         <img src="assets/images/producto-info.jpg" alt="Video Frutas Tropicales Canarias" style="width: 100%; max-width: 450px; border-radius: 4px; display: block; filter: brightness(0.8);">
@@ -93,8 +93,8 @@
 
     <footer id="contact">
         <div class="footer-content">
-           <a href="contacto.html" data-i18n="footer_contact">Contact</a> |
-           <a href="distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> |
+           <a href="contacto.html" data-i18n="footer_contact">Contact</a> <span class="footer-pipe">|</span>
+           <a href="distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> <span class="footer-pipe">|</span>
            <a href="condiciones.html" data-i18n="footer_legal">Legal Conditions</a>
         </div>
         <p class="copyright" style="margin-top: 1rem;" data-i18n="footer_copyright">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
