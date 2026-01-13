@@ -7,7 +7,19 @@ const translations = {
         contact: "contacto",
         news: "noticias",
         hero_title: "Maestros Confiteros",
-        hero_subtitle: "Islas Canarias - Desde 1968",
+        hero_title: "Maestros Confiteros",
+        hero_subtitle: "Islas Canarias",
+        hero_since: "desde 1968",
+        /* Page Titles */
+        title_home: "Inicio - Palmelita",
+        title_mermeladas: "Nuestras Mermeladas - Palmelita",
+        title_products: "Productos - Palmelita",
+        title_contact: "Contacto - Palmelita",
+        title_news: "Noticias - Palmelita",
+        title_sales: "Puntos de Venta - Palmelita",
+        title_canary: "Canarias Paraíso Natural - Palmelita",
+        title_distributors: "Distribuidores - Palmelita",
+        title_legal: "Condiciones Legales - Palmelita",
         splash_welcome: "Bienvenidos",
         enter_site: "Entrar",
         intro_title: "Tradición y Sabor",
@@ -117,7 +129,19 @@ const translations = {
         contact: "contact",
         news: "news",
         hero_title: "Master Confectioners",
-        hero_subtitle: "Canary Islands - Since 1968",
+        hero_title: "Master Confectioners",
+        hero_subtitle: "Canary Islands",
+        hero_since: "since 1968",
+        /* Page Titles */
+        title_home: "Home - Palmelita",
+        title_mermeladas: "Our Jams - Palmelita",
+        title_products: "Products - Palmelita",
+        title_contact: "Contact - Palmelita",
+        title_news: "News - Palmelita",
+        title_sales: "Sales Points - Palmelita",
+        title_canary: "Canary Islands Natural Paradise - Palmelita",
+        title_distributors: "Distributors - Palmelita",
+        title_legal: "Legal Conditions - Palmelita",
         splash_welcome: "Welcome",
         enter_site: "Enter",
         intro_title: "Tradition and Flavor",
@@ -224,7 +248,19 @@ const translations = {
         contact: "contact",
         news: "actualités",
         hero_title: "Maîtres Confiseurs",
-        hero_subtitle: "Îles Canaries - Depuis 1968",
+        hero_title: "Maîtres Confiseurs",
+        hero_subtitle: "Îles Canaries",
+        hero_since: "depuis 1968",
+        /* Page Titles */
+        title_home: "Accueil - Palmelita",
+        title_mermeladas: "Nos Confitures - Palmelita",
+        title_products: "Produits - Palmelita",
+        title_contact: "Contact - Palmelita",
+        title_news: "Nouvelles - Palmelita",
+        title_sales: "Points de Vente - Palmelita",
+        title_canary: "Îles Canaries Paradis Naturel - Palmelita",
+        title_distributors: "Distributeurs - Palmelita",
+        title_legal: "Mentions Légales - Palmelita",
         splash_welcome: "Bienvenue",
         enter_site: "Entrer",
         intro_title: "Tradition et Saveur",
@@ -331,7 +367,19 @@ const translations = {
         contact: "kontakt",
         news: "neuigkeiten",
         hero_title: "Meisterkonditoren",
-        hero_subtitle: "Kanarische Inseln - Seit 1968",
+        hero_title: "Meisterkonditoren",
+        hero_subtitle: "Kanarische Inseln",
+        hero_since: "seit 1968",
+        /* Page Titles */
+        title_home: "Startseite - Palmelita",
+        title_mermeladas: "Unsere Marmeladen - Palmelita",
+        title_products: "Produkte - Palmelita",
+        title_contact: "Kontakt - Palmelita",
+        title_news: "Nachrichten - Palmelita",
+        title_sales: "Verkaufsstellen - Palmelita",
+        title_canary: "Kanarische Inseln Naturparadies - Palmelita",
+        title_distributors: "Verteiler - Palmelita",
+        title_legal: "Rechtliche Bedingungen - Palmelita",
         splash_welcome: "Willkommen",
         enter_site: "Eintreten",
         intro_title: "Tradition und Geschmack",
@@ -541,4 +589,10 @@ function setLanguage(lang) {
             el.innerHTML = translations[lang][key];
         }
     });
+
+    // Update Document Title if key exists
+    const pageTitleKey = document.querySelector('meta[name="title-key"]')?.getAttribute('content');
+    if (pageTitleKey && translations[lang] && translations[lang][pageTitleKey]) {
+        document.title = translations[lang][pageTitleKey];
+    }
 }

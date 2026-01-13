@@ -1,0 +1,12 @@
+notas:
+- mostrar 2 mermeladas en pantallas medianas y chicas
+- agregar un sitio para poder agregar/editar noticias
+- 
+
+TITULOS DEL NAVEGADOR
+TRADUCCION DE TODO
+MENOS NITIDO MARCA DE AGUA
+LOGOS DE PUNTO DE VENTA MAS GRANDES
+
+
+LOGO MAS GRande de navbar
