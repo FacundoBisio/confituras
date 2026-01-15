@@ -550,20 +550,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     langBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const lang = btn.id.split("-")[1];
+        btn.addEventListener("click", (e) => {
+            // IMPORTANT: evita que se ejecute el href del <a> (que te estaba mandando a /=en)
+            e.preventDefault();
+            e.stopPropagation();
+
+            const lang = btn.id.split("-")[1]; // lang-es / lang-en / lang-de / lang-fr
             localStorage.setItem("palmelita_lang", lang);
 
             const pathNoBase = location.pathname.startsWith(basePath)
                 ? location.pathname.slice(basePath.length)
                 : location.pathname;
+
+            // Si estás en /de/index.html (stub) o en /index.html (real), siempre obtené el archivo actual
             const parts = pathNoBase.split("/").filter(Boolean);
             const currentFile = parts[parts.length - 1] || "index.html";
 
-            // Go to /<lang>/<currentFile> (stub). The stub will redirect back with ?lang=xx.
+            // Ir al stub del idioma (que luego vuelve a la página real con ?lang=xx)
             window.location.href = `${basePath}/${lang}/${currentFile}`;
         });
     });
+
 
     // Init Language
     setLanguage(currentLang);
