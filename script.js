@@ -482,26 +482,94 @@ const translations = {
 
 document.addEventListener("DOMContentLoaded", () => {
     const langBtns = document.querySelectorAll(".lang-btn");
-    const currentLang = localStorage.getItem("palmelita_lang") || "es"; // Persist language preference
+    
+    // Base path support (GitHub Pages project sites: https://user.github.io/<repo>/)
+    const basePath = (() => {
+        const host = location.hostname;
+        if (host.endsWith("github.io")) {
+            const first = location.pathname.split("/").filter(Boolean)[0];
+            return first ? `/${first}` : "";
+        }
+        return "";
+    })();
+
+    function detectLang() {
+        // 1) /es/... /en/... /de/... /fr/...
+        const pathNoBase = location.pathname.startsWith(basePath)
+            ? location.pathname.slice(basePath.length)
+            : location.pathname;
+        const seg1 = pathNoBase.split("/").filter(Boolean)[0];
+        if (["es", "en", "de", "fr"].includes(seg1)) return seg1;
+
+        // 2) ?lang=en
+        const q = new URLSearchParams(location.search).get("lang");
+        if (["es", "en", "de", "fr"].includes(q)) return q;
+
+        // 3) localStorage fallback
+        return localStorage.getItem("palmelita_lang") || "es";
+    }
+
+    const currentLang = detectLang();
+    localStorage.setItem("palmelita_lang", currentLang);
+
+    function updateActiveButton(lang) {
+        langBtns.forEach((b) => b.classList.remove("active"));
+        const activeBtn = document.getElementById(`lang-${lang}`);
+        if (activeBtn) activeBtn.classList.add("active");
+    }
+
+    function updateInternalLinks(lang) {
+        // Add/keep ?lang=xx in internal HTML links so the language persists when navigating
+        document.querySelectorAll("a[href]").forEach((a) => {
+            const href = a.getAttribute("href");
+            if (!href) return;
+
+            // Ignore external and special links
+            if (
+                href.startsWith("http://") ||
+                href.startsWith("https://") ||
+                href.startsWith("mailto:") ||
+                href.startsWith("tel:") ||
+                href.startsWith("#")
+            ) return;
+
+            // Ignore language stubs (/<lang>/...)
+            if (/^\/?(es|en|de|fr)\//.test(href)) return;
+
+            // Only rewrite local .html links (or directory links)
+            if (!href.endsWith(".html") && !href.endsWith("/")) return;
+
+            const [pathWithQuery, hash] = href.split("#");
+            const [path, query] = pathWithQuery.split("?");
+            const params = new URLSearchParams(query || "");
+            if (!params.get("lang")) params.set("lang", lang);
+
+            const newHref = `${path}?${params.toString()}${hash ? "#" + hash : ""}`;
+            a.setAttribute("href", newHref);
+        });
+    }
 
     langBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             const lang = btn.id.split("-")[1];
-            setLanguage(lang);
             localStorage.setItem("palmelita_lang", lang);
-            updateActiveButton(lang);
+
+            const pathNoBase = location.pathname.startsWith(basePath)
+                ? location.pathname.slice(basePath.length)
+                : location.pathname;
+            const parts = pathNoBase.split("/").filter(Boolean);
+            const currentFile = parts[parts.length - 1] || "index.html";
+
+            // Go to /<lang>/<currentFile> (stub). The stub will redirect back with ?lang=xx.
+            window.location.href = `${basePath}/${lang}/${currentFile}`;
         });
     });
 
     // Init Language
     setLanguage(currentLang);
     updateActiveButton(currentLang);
+    updateInternalLinks(currentLang);
 
-    function updateActiveButton(lang) {
-        langBtns.forEach((b) => b.classList.remove("active"));
-        const activeBtn = document.getElementById(`lang-${lang}`);
-        if(activeBtn) activeBtn.classList.add("active");
-    }
 
     // Lógica de Lightbox
     const lightbox = document.getElementById("lightbox");

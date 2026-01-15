@@ -25,17 +25,18 @@
 
 .watermark-bg::before {
   content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: fixed; /* Fixed relative to viewport to prevent size jumping */
+  top: 55%; /* Centered vertically */
+  left: 50%; /* Centered horizontally */
   transform: translate(-50%, -50%);
-  width: 110%; /* Increased from 80% */
-  height: 110%; /* Increased from 80% */
+  width: 90vw; /* Fixed width relative to viewport */
+  height: 90vh; /* Fixed height relative to viewport */
   background: url("assets/images/logo.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.15; /* Increased opacity so it is "seen more" */
+  opacity: 0.15;
   z-index: -1;
-  filter: blur(3px); /* Slightly more blur "menos nítida" */
+  filter: blur(0.5px); /* Much sharper as requested */
+  pointer-events: none; /* Ensure it doesn't interfere with clicks */
 }
 
 /* Reset & Base */
@@ -518,16 +519,18 @@ body.splash-page footer {
 /* Watermark Background */
 .products::before {
   content: "";
-  position: absolute;
-  top: 50%;
+  position: fixed; /* Match global fixed positioning */
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
+  width: 90vw; /* Match global size */
+  height: 90vh; /* Match global size */
   background: url("assets/images/logo.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.05;
+  opacity: 0.15;
   z-index: -1;
+  filter: blur(0.5px); /* Match global sharpness */
+  pointer-events: none;
 }
 
 .product-grid {
@@ -618,6 +621,7 @@ footer {
   background: #d10029;
   color: var(--white);
   padding: 4rem 2rem 2rem;
+  z-index: 1; /* Ensure footer sits above the fixed watermark */
 }
 
 footer::before {
