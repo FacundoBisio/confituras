@@ -494,18 +494,15 @@ document.addEventListener("DOMContentLoaded", () => {
     })();
 
     function detectLang() {
-        // 1) /es/... /en/... /de/... /fr/...
+        const q = new URLSearchParams(location.search).get("lang");
+        if (["es", "en", "de", "fr"].includes(q)) return q;
+
         const pathNoBase = location.pathname.startsWith(basePath)
             ? location.pathname.slice(basePath.length)
             : location.pathname;
         const seg1 = pathNoBase.split("/").filter(Boolean)[0];
         if (["es", "en", "de", "fr"].includes(seg1)) return seg1;
 
-        // 2) ?lang=en
-        const q = new URLSearchParams(location.search).get("lang");
-        if (["es", "en", "de", "fr"].includes(q)) return q;
-
-        // 3) localStorage fallback
         return localStorage.getItem("palmelita_lang") || "es";
     }
 
@@ -551,23 +548,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     langBtns.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-            // IMPORTANT: evita que se ejecute el href del <a> (que te estaba mandando a /=en)
             e.preventDefault();
             e.stopPropagation();
 
-            const lang = btn.id.split("-")[1]; // lang-es / lang-en / lang-de / lang-fr
+            const lang = btn.id.split("-")[1]; // es/en/de/fr
             localStorage.setItem("palmelita_lang", lang);
 
-            const pathNoBase = location.pathname.startsWith(basePath)
-                ? location.pathname.slice(basePath.length)
-                : location.pathname;
+            // Mantener la página actual, solo cambiar el querystring lang
+            const url = new URL(window.location.href);
 
-            // Si estás en /de/index.html (stub) o en /index.html (real), siempre obtené el archivo actual
-            const parts = pathNoBase.split("/").filter(Boolean);
-            const currentFile = parts[parts.length - 1] || "index.html";
+            // Si estás en /es/... o /en/... (stub), te limpia el prefijo y te deja en la página real
+            const parts = url.pathname.split("/").filter(Boolean);
+            if (parts[0] && ["es", "en", "de", "fr"].includes(parts[0])) {
+                parts.shift();
+                url.pathname = "/" + (parts.join("/") || "index.html");
+            }
 
-            // Ir al stub del idioma (que luego vuelve a la página real con ?lang=xx)
-            window.location.href = `${basePath}/${lang}/${currentFile}`;
+            url.searchParams.set("lang", lang);
+            window.location.href = url.toString();
         });
     });
 
@@ -656,18 +654,84 @@ document.addEventListener("DOMContentLoaded", () => {
     // Removed Splash/Reveal listeners since feature is removed
 });
 
+// --- DYNAMIC LOGO LOGIC ---
+const logoMap = {
+    es: "/assets/images/logo/Espanol-01.jpg",
+    en: "/assets/images/logo/Ingles-01.jpg",
+    de: "/assets/images/logo/Aleman-01.jpg",
+    fr: "/assets/images/logo/Frances-01.jpg"
+};
+
+// --- Dynamic Logo Logic ---
+function updateLogo(lang) {
+    // Select all logo instances (Header + Hero Overlay)
+    const logoImgs = document.querySelectorAll(".dynamic-logo");
+    logoImgs.forEach(img => {
+        if (logoMap[lang]) {
+            img.src = logoMap[lang];
+        } else {
+             // Fallback to default (Spanish)
+            img.src = logoMap["es"];
+        }
+    });
+}
+
 function setLanguage(lang) {
     const elements = document.querySelectorAll("[data-i18n]");
     elements.forEach((el) => {
         const key = el.getAttribute("data-i18n");
         if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key];
+             if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                el.placeholder = translations[lang][key];
+            } else {
+                el.innerHTML = translations[lang][key];
+            }
         }
     });
+
+    // Update active button
+    const langBtns = document.querySelectorAll(".lang-btn");
+    langBtns.forEach((b) => b.classList.remove("active"));
+    const activeBtn = document.getElementById(`lang-${lang}`);
+    if (activeBtn) activeBtn.classList.add("active");
 
     // Update Document Title if key exists
     const pageTitleKey = document.querySelector('meta[name="title-key"]')?.getAttribute('content');
     if (pageTitleKey && translations[lang] && translations[lang][pageTitleKey]) {
         document.title = translations[lang][pageTitleKey];
     }
+
+    // Update Logo
+    updateLogo(lang);
+
+    // Dispatch event
+    document.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang } }));
 }
+
+// Initialize scroll logic outside of functions to ensure it binds
+document.addEventListener("DOMContentLoaded", () => {
+    // ... existing initialization ...
+
+    // --- Hero Mask Scroll Logic ---
+    const heroMask = document.querySelector(".hero-mask-background");
+    if (heroMask) {
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            // Fade out the white mask over the first 400px
+            let opacity = 1 - (scrollY / 400);
+            
+            // Clamp opacity between 0 and 1
+            if (opacity < 0) opacity = 0;
+            if (opacity > 1) opacity = 1;
+            
+            heroMask.style.opacity = opacity;
+            
+            // Allow clicking through when transparent
+            if (opacity < 0.1) {
+                heroMask.style.pointerEvents = "none";
+            } else {
+                heroMask.style.pointerEvents = "auto";
+            }
+        });
+    }
+});
