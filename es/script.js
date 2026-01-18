@@ -6,8 +6,8 @@ const translations = {
         about: "nosotros",
         contact: "contacto",
         news: "noticias",
-        hero_title: "Maestros Confiteros",
-        hero_title: "Maestros Confiteros",
+        news: "noticias",
+        hero_title: "Mermeladas Canarias Artesanales",
         hero_subtitle: "Islas Canarias",
         hero_since: "desde 1968",
         /* Page Titles */

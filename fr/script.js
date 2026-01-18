@@ -247,8 +247,8 @@ const translations = {
         about: "à propos",
         contact: "contact",
         news: "actualités",
-        hero_title: "Maîtres Confiseurs",
-        hero_title: "Maîtres Confiseurs",
+        news: "actualités",
+        hero_title: "Confitures Artisanales des Canaries",
         hero_subtitle: "Îles Canaries",
         hero_since: "depuis 1968",
         /* Page Titles */

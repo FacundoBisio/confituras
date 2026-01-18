@@ -366,8 +366,8 @@ const translations = {
         about: "über uns",
         contact: "kontakt",
         news: "neuigkeiten",
-        hero_title: "Meisterkonditoren",
-        hero_title: "Meisterkonditoren",
+        news: "neuigkeiten",
+        hero_title: "Kanarische Handgemachte Marmeladen",
         hero_subtitle: "Kanarische Inseln",
         hero_since: "seit 1968",
         /* Page Titles */

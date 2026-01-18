@@ -128,8 +128,8 @@ const translations = {
         about: "about us",
         contact: "contact",
         news: "news",
-        hero_title: "Master Confectioners",
-        hero_title: "Master Confectioners",
+        news: "news",
+        hero_title: "Canary Islands Artisanal Jams",
         hero_subtitle: "Canary Islands",
         hero_since: "since 1968",
         /* Page Titles */
