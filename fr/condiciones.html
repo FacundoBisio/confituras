@@ -1,12 +1,167 @@
-﻿<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
-    <script>
-      localStorage.setItem("palmelita_lang", "fr");
-      window.location.replace("/condiciones.html?lang=fr");
-    </script>
-  </head>
-  <body></body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Términos legales y política de privacidad de Confituras Palmelita.">
+    <meta name="title-key" content="title_legal">
+    <title>Condiciones Legales - Palmelita</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+    <style>
+        .legal-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            color: #333;
+            font-family: 'Lato', sans-serif;
+            text-align: left;
+        }
+        .legal-section {
+            margin-bottom: 3rem;
+        }
+        .legal-title {
+            color: #d32f2f; /* Red branding color */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .legal-subtitle {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .legal-text {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        @media(max-width: 768px) {
+            .legal-container {
+                margin: 2rem auto;
+                padding: 0 1.5rem;
+            }
+            .legal-section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Palmelita Logo" class="dynamic-logo"></a>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Pipe separated lowercase nav -->
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="/mermeladas.html" data-i18n="home">palmelita jam</a></li>
+                    <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
+                    <li><a href="/contacto.html" data-i18n="contact">contact</a></li>
+                    <li><a href="/noticias.html" data-i18n="news">news</a></li>
+                    <li><a href="/canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canary islands natural paradise</a></li>
+                </ul>
+            </div>
+            <div class="lang-switch">
+                <button id="lang-es" class="lang-btn active" title="Español"><img src="https://flagcdn.com/24x18/es.png" alt="ES" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-en" class="lang-btn" title="English"><img src="https://flagcdn.com/24x18/gb.png" alt="EN" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-de" class="lang-btn" title="Deutsch"><img src="https://flagcdn.com/24x18/de.png" alt="DE" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-fr" class="lang-btn" title="Français"><img src="https://flagcdn.com/24x18/fr.png" alt="FR" style="width: 20px; vertical-align: middle;"></button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="intro">
+        <div class="maestros-title" data-i18n="hero_title">Maestros Confiteros</div>
+        <div class="canary-title"><span data-i18n="hero_subtitle">Islas Canarias</span> <span style="font-size: 1.5rem; display:block; margin-top: -10px;" data-i18n="hero_since">desde 1968</span></div>
+    </section>
+
+    <section class="legal-container">
+        
+        <!-- Privacy Policy -->
+        <div class="legal-section">
+            <h2 class="legal-title" data-i18n="legal_title">Legal terms and conditions</h2>
+            <h3 class="legal-subtitle" data-i18n="legal_privacy_subtitle">Privacy policy:</h3>
+            <p class="legal-text" data-i18n="legal_privacy_text_1">
+                In accordance with the LOPD (Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal) we inform you that your personal data collected at the time of completing the purchase will be incorporated into a file of "CUSTOMERS AND / OR SUPPLIERS" for which Confituras Palmelita S.L. is responsible.
+            </p>
+            <p class="legal-text" data-i18n="legal_privacy_text_2">
+                Our company and the company that hosts our pages have implemented the necessary technical and organizational measures to guarantee the security, confidentiality and integrity of the personal data we process.
+            </p>
+            <p class="legal-text" data-i18n="legal_privacy_text_3">
+                Your data will never be disclosed to third parties, except in the cases provided for by law, and obviously except to the company that must carry out the transport of your orders, to which only the data necessary to carry out the delivery will be communicated.
+            </p>
+            <p class="legal-text" data-i18n="legal_privacy_text_4">
+                In particular, we may use your e-mail address to send you our newsletters and offers, subject to you unsubscribing from them.
+            </p>
+            <p class="legal-text" data-i18n="legal_privacy_text_5">
+                Finally, we inform you that you may exercise your rights of access, rectification and cancellation of your data in accordance with the terms of Organic Law 15/99 and its implementing regulations by sending an email to privacidad@palmelita.es with your requirements.
+            </p>
+        </div>
+
+        <!-- Cookies -->
+        <div class="legal-section">
+            <h3 class="legal-subtitle" data-i18n="legal_cookies_subtitle">Cookies</h3>
+            <p class="legal-text" data-i18n="legal_cookies_text_1">
+                This website uses cookies to facilitate navigation and the purchase of products.
+            </p>
+            <p class="legal-text" data-i18n="legal_cookies_text_2">
+                A cookie is a small data file that is installed on your hard drive, for no other purpose than to remind the supplier of purchases made and thus be able to offer its management. Also in the case of registered users, a cookie will be used if you want to save your data between sessions. Under no circumstances do the cookies used allow us to discover your identity or carry out operations other than the mere control of your purchases and user identification. The user has the possibility of configuring their browser, in accordance with the instructions contained in the same and in their configuration manuals, so that it notifies them of the reception and acceptance of cookies.
+            </p>
+            <p class="legal-text" data-i18n="legal_cookies_text_3">
+                It should be remembered that on occasions, non-acceptance of the cookie may mean that you may not be able to access the full functionality of the service or that you may have to register each time you access a service that requires prior registration.
+            </p>
+        </div>
+
+        <!-- Law -->
+        <div class="legal-section">
+            <h3 class="legal-subtitle" data-i18n="legal_law_subtitle">Applicable Law and Jurisdiction</h3>
+            <p class="legal-text" data-i18n="legal_law_text_1">
+                These Legal Conditions and the rest of the conditions of the Website shall be governed by Spanish law.
+            </p>
+            <p class="legal-text" data-i18n="legal_law_text_2">
+                For any questions that may arise or actions arising from the provision of services and contents of Confituras Palmelita S.L. and on the interpretation, application, compliance or breach of the provisions herein, Confituras Palmelita S.L. and the User, expressly waiving any other jurisdiction that may apply, are subject to the jurisdiction of the Courts and Tribunals of Santa Cruz de Tenerife.
+            </p>
+        </div>
+
+        <!-- Intellectual Property -->
+        <div class="legal-section">
+            <h3 class="legal-subtitle" data-i18n="legal_ip_subtitle">Intellectual and Industrial Property Rights</h3>
+            <p class="legal-text" data-i18n="legal_ip_text_1">
+                Copyright © 2020 – Confituras Palmelita S.L. All rights reserved. All rights reserved.
+            </p>
+            <p class="legal-text" data-i18n="legal_ip_text_2">
+                This Website is governed by Spanish law and is protected by national and international intellectual and industrial property laws.
+            </p>
+            <p class="legal-text" data-i18n="legal_ip_text_3">
+                The texts, designs, images, audio, databases, logos, structure, brands and other elements of this site are protected by the intellectual and industrial property rights of Confituras Palmelita S.L. and/or third party owners of the same who have duly authorised their inclusion on the Web Site either by sending the registration form or by means of the agreements for the transfer of exploitation rights that they have stipulated with Confituras Palmelita S.L.. Any reproduction, transmission, adaptation, translation, modification, communication to the public, or any other exploitation of all or part of the content of this Web Site, carried out in any form or by any means, electronic, mechanical or otherwise, is strictly prohibited unless prior written authorisation has been given by Confituras Palmelita S.L. or third party owners. Any infringement of these rights may give rise to the corresponding extrajudicial or judicial civil or criminal proceedings.
+            </p>
+            <p class="legal-text" data-i18n="legal_ip_text_4">
+                Confituras Palmelita S.L. does not grant any licence or authorisation of use of any kind on its Intellectual and Industrial property rights or on any other property or right related to the Portal, the services or the contents of the same. The legitimacy of the intellectual or industrial property rights corresponding to the contents provided by the Users is their exclusive responsibility.
+            </p>
+        </div>
+
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+           <a href="/contacto.html" data-i18n="footer_contact">Contact</a> <span class="footer-pipe">|</span>
+           <a href="/distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> <span class="footer-pipe">|</span>
+           <a href="/condiciones.html" data-i18n="footer_legal">Legal Conditions</a>
+        </div>
+        <p class="copyright" style="margin-top: 1rem;" data-i18n="footer_copyright">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

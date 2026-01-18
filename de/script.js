@@ -497,6 +497,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const q = new URLSearchParams(location.search).get("lang");
         if (["es", "en", "de", "fr"].includes(q)) return q;
 
+        // Domain check
+        const host = window.location.hostname;
+        const langByDomain = Object.keys(domainMap).find(key => domainMap[key] === host);
+        if (langByDomain) return langByDomain;
+
         const pathNoBase = location.pathname.startsWith(basePath)
             ? location.pathname.slice(basePath.length)
             : location.pathname;
@@ -554,7 +559,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const lang = btn.id.split("-")[1]; // es/en/de/fr
             localStorage.setItem("palmelita_lang", lang);
 
-            // Mantener la página actual, solo cambiar el querystring lang
+            const targetDomain = domainMap[lang];
+            const currentDomain = window.location.hostname;
+
+            // Redirect if target domain is defined and different from current
+            // Check for localhost to avoid breaking local dev entirely (optional, but good practice per plan)
+            if (targetDomain && targetDomain !== currentDomain && currentDomain !== "localhost" && currentDomain !== "127.0.0.1") {
+                const protocol = window.location.protocol;
+                // Preserve path and search, but update lang param if we want to be explicit, 
+                // though domain detection should handle it on the other side.
+                // We'll keep the path.
+                window.location.href = `${protocol}//${targetDomain}${window.location.pathname}${window.location.search}${window.location.hash}`;
+                return;
+            }
+
+            // Normal behavior (local or fallback)
             const url = new URL(window.location.href);
 
             // Si estás en /es/... o /en/... (stub), te limpia el prefijo y te deja en la página real
@@ -655,25 +674,35 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --- DYNAMIC LOGO LOGIC ---
+// --- DYNAMIC LOGO LOGIC ---
 const logoMap = {
-    es: "/assets/images/logo/Espanol-01.jpg",
-    en: "/assets/images/logo/Ingles-01.jpg",
-    de: "/assets/images/logo/Aleman-01.jpg",
-    fr: "/assets/images/logo/Frances-01.jpg"
+    es: "assets/images/logo/Espanol-01.jpg",
+    en: "assets/images/logo/Ingles-01.jpg",
+    de: "assets/images/logo/Aleman-01.jpg",
+    fr: "assets/images/logo/Frances-01.jpg"
+};
+
+const domainMap = {
+    es: "confituras.palmelita.es",
+    en: "jam.palmelita.com",
+    de: "konfitueren.palmelita.com",
+    fr: "confitures.palmelita.com"
 };
 
 // --- Dynamic Logo Logic ---
 function updateLogo(lang) {
-    // Select all logo instances (Header + Hero Overlay)
-    const logoImgs = document.querySelectorAll(".dynamic-logo");
-    logoImgs.forEach(img => {
+    // Select the logo by ID (most files have id="dynamic-logo")
+    // Also try class .dynamic-logo for fallback if needed
+    const logoImg = document.getElementById("dynamic-logo") || document.querySelector(".dynamic-logo");
+    
+    if (logoImg) {
         if (logoMap[lang]) {
-            img.src = logoMap[lang];
+            logoImg.src = logoMap[lang];
         } else {
              // Fallback to default (Spanish)
-            img.src = logoMap["es"];
+            logoImg.src = logoMap["es"];
         }
-    });
+    }
 }
 
 function setLanguage(lang) {

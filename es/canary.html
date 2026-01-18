@@ -1,12 +1,107 @@
-﻿<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
-    <script>
-      localStorage.setItem("palmelita_lang", "es");
-      window.location.replace("/canary.html?lang=es");
-    </script>
-  </head>
-  <body></body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frutas tropicales de Canarias: papaya, mango, y más. El paraíso natural de donde vienen nuestras mermeladas.">
+    <meta name="title-key" content="title_canary">
+    <title>Canarias Paraíso Natural - Palmelita</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Palmelita Logo" class="dynamic-logo"></a>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="/mermeladas.html" data-i18n="home">palmelita jam</a></li>
+                    <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
+                    <li><a href="/contacto.html" data-i18n="contact">contact</a></li>
+                    <li><a href="/noticias.html" data-i18n="news">news</a></li>
+                    <li><a href="/canary.html" class="active" style="font-weight: bold; text-decoration: none;">canary islands natural paradise</a></li>
+                </ul>
+            </div>
+            <div class="lang-switch">
+                <button id="lang-es" class="lang-btn active" title="Español"><img src="https://flagcdn.com/24x18/es.png" alt="ES" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-en" class="lang-btn" title="English"><img src="https://flagcdn.com/24x18/gb.png" alt="EN" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-de" class="lang-btn" title="Deutsch"><img src="https://flagcdn.com/24x18/de.png" alt="DE" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-fr" class="lang-btn" title="Français"><img src="https://flagcdn.com/24x18/fr.png" alt="FR" style="width: 20px; vertical-align: middle;"></button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-wrapper watermark-bg responsive-wrapper" style="min-height: 60vh;">
+        
+    <section class="intro">
+        <div class="maestros-title" data-i18n="hero_title">Maestros Confiteros</div>
+        <div class="canary-title"><span data-i18n="hero_subtitle">Islas Canarias</span> <span style="font-size: 1.5rem; display:block; margin-top: -10px;" data-i18n="hero_since">desde 1968</span></div>
+    </section>
+
+        <div style="max-width: 1000px; margin: 0 auto; color: #333; font-family: var(--font-body);">
+            
+            <!-- Article Header -->
+            <div style="margin-bottom: 2rem;">
+                <h2 style="font-family: var(--font-heading); color: #d10029; font-size: 1.8rem; margin-bottom: 0.5rem;" data-i18n="canary_article_title">
+                    A pedir de boca – Frutas tropicales. Canarias
+                </h2>
+                <p style="font-weight: bold; color: #555; font-size: 1rem;" data-i18n="canary_article_date">13 sep 2011</p>
+            </div>
+
+            <p style="margin-bottom: 2rem; line-height: 1.6;" data-i18n="canary_article_intro">
+                Documental sobre las frutas tropicales que se cultivan y consumen en Canarias: <span style="color: #d10029;">la papaya</span>, el mango, la carambola, el caimito, el mamey rojo, los plátanos y el aguacate. De cada una de estas frutas se explican todas las características de cultivo, planta, fruto, propiedades medicinales, forma de presentación de la fruta y recetas de degustación de las mismas.
+            </p>
+            
+            <div style="width: 100%; height: 2px; background-color: #d10029; margin: 2rem 0;"></div>
+
+            <!-- Two Column Content -->
+            <div class="responsive-grid-2" style="align-items: start;">
+                
+                <!-- Text Column -->
+                <div style="line-height: 1.6; font-size: 0.95rem;">
+                    <p data-i18n="canary_article_body">
+                        En España tradicionalmente se conoce la Huerta de Murcia como referente de cultivo de frutas y hortalizas. Las Islas Canarias son conocidas principalmente por su producción de plátanos. Sin embargo, y desconocido por muchos, las Islas Canarias producen probablemente los mejores cultivos de frutas tropicales y exóticas a nivel nacional. Esto se debe principalmente a dos razones: 1º el clima soleado y tropical durante la mayor parte del año. 2º su clima marítimo influenciado por el Océano Atlántico. Estas dos condiciones originan frutas con gran aroma e intensidad.
+                    </p>
+                </div>
+
+                <!-- Video Thumbnail Column -->
+                <div class="responsive-img-container">
+                   <a href="https://www.rtve.es/play/videos/a-pedir-de-boca/pedir-boca-frutas-tropicales-canarias/675883/" target="_blank" style="text-decoration: none; position: relative; display: block;">
+                        <!-- Using producto-info.jpg as a placeholder for the video thumbnail, as requested "video que en realidad es una foto" -->
+                        <img src="assets/images/producto-info.jpg" alt="Video Frutas Tropicales Canarias" style="width: 100%; max-width: 450px; border-radius: 4px; display: block; filter: brightness(0.8);">
+                        
+                        <!-- Play Button Overlay -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background-color: rgba(0,0,0,0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff;">
+                            <div style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 20px solid #fff; margin-left: 5px;"></div>
+                        </div>
+                        <span style="position: absolute; bottom: 10px; right: 10px; color: #fff; background: rgba(0,0,0,0.7); padding: 2px 5px; font-size: 0.8rem; border-radius: 3px;">00:00 / 31:16</span>
+                   </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+           <a href="/contacto.html" data-i18n="footer_contact">Contact</a> <span class="footer-pipe">|</span>
+           <a href="/distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> <span class="footer-pipe">|</span>
+           <a href="/condiciones.html" data-i18n="footer_legal">Legal Conditions</a>
+        </div>
+        <p class="copyright" style="margin-top: 1rem;" data-i18n="footer_copyright">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

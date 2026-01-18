@@ -11,12 +11,12 @@ LOGOS DE PUNTO DE VENTA MAS GRANDES
 
 LOGO MAS GRande de navbar
 
-mermeladas canarias que aparezca primero dentro de google
-numero 1 que sea la mas visible
-como hacer el posicionamiento
+1.  mermeladas canarias que aparezca primero dentro de google
+    numero 1 que sea la mas visible
+    como hacer el posicionamiento
 
-el cliente me dijo que quiere hacer una pagina para cada dominio y que cada dominio tenga su idioma, 
-jam.palmelita.com ingles
-confituras.palmelita.es espanol
-konfitueren.palmelita.com alemán
-confitures.palmelita.com frances
+2. el cliente me dijo que quiere hacer una pagina para cada dominio y que cada dominio tenga su idioma, al igual que la imagen del navbar que dentro de la carpeta de logo sale si la pagina es en español, ingles, alemán o frances el logo a usar arreglame todo eso y que sea que cuando uno vaya a tocar una bandera te mande en realidad a otro dominio dentro de la web
+    jam.palmelita.com ingles
+    confituras.palmelita.es espanol
+    konfitueren.palmelita.com alemán
+    confitures.palmelita.com frances

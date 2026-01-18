@@ -1,12 +1,103 @@
-﻿<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
-    <script>
-      localStorage.setItem("palmelita_lang", "es");
-      window.location.replace("/noticias.html?lang=es");
-    </script>
-  </head>
-  <body></body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Últimas noticias y eventos de Confituras Palmelita. Mantente informado sobre nuestra marca.">
+    <meta name="title-key" content="title_news">
+    <title>Noticias - Palmelita</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Palmelita Logo" class="dynamic-logo"></a>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Pipe separated lowercase nav -->
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="/mermeladas.html" data-i18n="home">palmelita jam</a></li>
+                    <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
+                    <li><a href="/contacto.html" data-i18n="contact">contact</a></li>
+                    <li><a href="/noticias.html" class="active" data-i18n="news">news</a></li>
+                    <li><a href="/canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canary islands natural paradise</a></li>
+                </ul>
+            </div>
+            <div class="lang-switch">
+                <button id="lang-es" class="lang-btn active" title="Español"><img src="https://flagcdn.com/24x18/es.png" alt="ES" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-en" class="lang-btn" title="English"><img src="https://flagcdn.com/24x18/gb.png" alt="EN" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-de" class="lang-btn" title="Deutsch"><img src="https://flagcdn.com/24x18/de.png" alt="DE" style="width: 20px; vertical-align: middle;"></button>
+                <button id="lang-fr" class="lang-btn" title="Français"><img src="https://flagcdn.com/24x18/fr.png" alt="FR" style="width: 20px; vertical-align: middle;"></button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="intro">
+        <div class="maestros-title" data-i18n="hero_title">Maestros Confiteros</div>
+        <div class="canary-title"><span data-i18n="news">Noticias</span> <span style="font-size: 1.5rem; display:block; margin-top: -10px;" data-i18n="hero_since">desde 1968</span></div>
+    </section>
+
+    <section class="news-container">
+        <!-- News Item 1 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_1_title">Palmelita seleccionada como producto local para Madrid Fusión 2023</h3>
+            <div class="news-meta" data-i18n="news_1_meta">Diario de Avisos</div>
+            <span class="news-date" data-i18n="news_1_date">Miércoles, 18 de enero de 2023</span>
+            <p class="news-excerpt" data-i18n="news_1_excerpt">La gastronomía de Candelaria estará presente en Madrid Fusión...</p>
+        </article>
+
+        <!-- News Item 2 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_2_title">Palmelita seleccionada para Gran Feria de Alimentación de España El Corte Inglés</h3>
+            <div class="news-meta" data-i18n="news_2_meta">Diario Crítico, Salud y Consumo</div>
+            <span class="news-date" data-i18n="news_2_date">Miércoles, 04 de marzo de 2022</span>
+            <p class="news-excerpt" data-i18n="news_2_excerpt">El Corte Inglés inaugura la Gran Feria de la Alimentación en el marco de su 75 Aniversario...</p>
+        </article>
+
+        <!-- News Item 3 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_3_title">«De Bajamar al corazón de Europa»</h3>
+            <div class="news-meta" data-i18n="news_3_meta">Diario de Avisos</div>
+            <span class="news-date" data-i18n="news_3_date">Domingo, 21 de junio de 2015</span>
+            <p class="news-excerpt" data-i18n="news_3_excerpt">Confituras Palmelita da el salto a Alemania con unos productos de gran calidad...</p>
+        </article>
+
+        <!-- News Item 4 -->
+        <article class="news-item">
+            <h3 class="news-title" data-i18n="news_4_title">«Palmelita comienza a exportar sus confituras a Alemania»</h3>
+            <div class="news-meta" data-i18n="news_4_meta">La Opinión de Tenerife</div>
+            <span class="news-date" data-i18n="news_4_date">Viernes, 19 de junio de 2015</span>
+            <p class="news-excerpt" data-i18n="news_4_excerpt">...Confituras Palmelita fue creada en 1968 por el maestro pastelero Werner Bittermann (1928-2014) en su pequeño obrador...</p>
+        </article>
+
+        <!-- Co-financing Section -->
+        <div class="cofinance-section" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: center;">
+            <p data-i18n="cofinance_text" style="color: #777; font-size: 0.9rem; margin-bottom: 2rem;">Proyecto cofinanciado por el Fondo Europeo de Desarrollo Regional (FEDER)</p>
+            <div class="cofinance-logos" style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                 <img src="assets/images/gobCanarias.png" alt="Gobierno de Canarias" style="height: 100px; width: auto; opacity: 0.8;">
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+           <a href="/contacto.html" data-i18n="footer_contact">Contact</a> <span class="footer-pipe">|</span>
+           <a href="/distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> <span class="footer-pipe">|</span>
+           <a href="/condiciones.html" data-i18n="footer_legal">Legal Conditions</a>
+        </div>
+        <p class="copyright" style="margin-top: 1rem;" data-i18n="footer_copyright">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

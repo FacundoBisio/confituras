@@ -1,12 +1,210 @@
-﻿<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
-    <script>
-      localStorage.setItem("palmelita_lang", "de");
-      window.location.replace("/index.html?lang=de");
-    </script>
-  </head>
-  <body></body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confituras Palmelita - Maestros Confiteros desde 1968. Mermeladas artesanales de frutas tropicales de las Islas Canarias.">
+    <meta name="title-key" content="title_home">
+    <title>Palmelita - Maestros Confiteros</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+    <nav>
+        <div class="logo">
+        <a href="index.html"><img src="assets/images/logo.png" alt="Palmelita Logo" id="dynamic-logo"></a>
+        </div>
+
+        <button class="hamburger" id="hamburger" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+        <ul>
+            <li><a href="/mermeladas.html" data-i18n="home">palmelita jam</a></li>
+            <li><a href="index.html#products-reveal-section" data-i18n="products">products</a></li>
+            <li><a href="/contacto.html" data-i18n="contact">contact</a></li>
+            <li><a href="/noticias.html" data-i18n="news">news</a></li>
+            <li><a href="/canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canary islands natural paradise</a></li>
+        </ul>
+        </div>
+
+        <div class="lang-switch">
+        <button id="lang-es" class="lang-btn active" title="Español" type="button">
+            <img src="https://flagcdn.com/24x18/es.png" alt="ES" style="width: 20px; vertical-align: middle;">
+        </button>
+        <button id="lang-en" class="lang-btn" title="English" type="button">
+            <img src="https://flagcdn.com/24x18/gb.png" alt="EN" style="width: 20px; vertical-align: middle;">
+        </button>
+        <button id="lang-de" class="lang-btn" title="Deutsch" type="button">
+            <img src="https://flagcdn.com/24x18/de.png" alt="DE" style="width: 20px; vertical-align: middle;">
+        </button>
+        <button id="lang-fr" class="lang-btn" title="Français" type="button">
+            <img src="https://flagcdn.com/24x18/fr.png" alt="FR" style="width: 20px; vertical-align: middle;">
+        </button>
+        </div>
+    </nav>
+    </header>
+
+    <div class="splash-container">
+        <!-- White Mask Background (Behind Video) -->
+        <div class="hero-mask-background"></div>
+
+        <div class="splash-video-wrapper">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="videoHome.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="splash-text" data-i18n="splash_welcome" style="margin-bottom: 2rem;">
+            Bienvenido al Paraíso Natural
+        </div>
+        <!-- Button removed -->
+    </div>
+
+    <!-- Main Content Section -->
+    <div id="products-reveal-section" class="visible">
+        <!-- Intro / Motto section -->
+        <section class="intro">
+            <div class="maestros-title" data-i18n="hero_title">Maestros Confiteros</div>
+            <div class="canary-title"><span data-i18n="hero_subtitle">Islas Canarias</span> <span style="font-size: 1.5rem; display:block; margin-top: -10px;" data-i18n="hero_since">desde 1968</span></div>
+        </section>
+
+        <section id="products" class="products">
+            <!-- H2 Removed as per interpretation of 'sin los nuestros productos' locally on landing -->
+            <div class="product-grid">
+                <!-- Papaya Naranja -->
+                <!-- Papaya Naranja -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/papaya_naranja.png" alt="Papaya y Naranja">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_papaya_orange">Papaya</h3>
+                        <p data-i18n="desc_papaya_orange">Extra Jam Palmelita - Pawpaw - Orange 335 g</p>
+                    </div>
+                </div>
+
+                <!-- Papaya Naranja Diet -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/papaya_naranja_diet.png" alt="Papaya y Naranja Diet">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_papaya_orange_diet">Papaya Diet</h3>
+                        <p data-i18n="desc_papaya_orange_diet">Extra Jam Palmelita - Pawpaw - Orange - Diet 335 g</p>
+                    </div>
+                </div>
+
+                <!-- Mango -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/mango.png" alt="Mermelada de Mango">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_mango">Mango</h3>
+                        <p data-i18n="desc_mango">Extra Jam Palmelita - Mango 335 g</p>
+                    </div>
+                </div>
+
+                <!-- Kiwi -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/kiwi.png" alt="Mermelada de Kiwi">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_kiwi">Kiwi</h3>
+                        <p data-i18n="desc_kiwi">Extra Jam Palmelita - Kiwi 335 g</p>
+                    </div>
+                </div>
+
+                 <!-- Guayaba -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/guayaba.png" alt="Guayaba">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_guayaba">Guayaba</h3>
+                        <p data-i18n="desc_guayaba">Extra Jam Palmelita - Guava 335 g</p>
+                    </div>
+                </div>
+
+                <!-- Piña -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/pina.png" alt="Piña">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_pina">Piña</h3>
+                        <p data-i18n="desc_pina">Extra Jam Palmelita - Pineapple 335 g</p>
+                    </div>
+                </div>
+                
+                 <!-- Fresa -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/fresa.png" alt="Fresa">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_fresa">Fresa</h3>
+                        <p data-i18n="desc_fresa">Extra Jam Palmelita - Strawberry 335 g</p>
+                    </div>
+                </div>
+
+                <!-- Naranja -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/naranja.png" alt="Naranja">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_naranja">Naranja</h3>
+                        <p data-i18n="desc_naranja">Extra Jam Palmelita - Orange 335 g</p>
+                    </div>
+                </div>
+
+                <!-- Pimiento -->
+                 <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/pimiento.png" alt="Pimiento">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_pimiento">Pimiento</h3>
+                        <p data-i18n="desc_pimiento">Extra Jam Palmelita - Pepper 335 g</p>
+                    </div>
+                </div>
+                
+                <!-- Limón (if available) -->
+                 <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/limon.jpg" alt="Limón">
+                    </div>
+                    <div class="product-info">
+                        <h3 data-i18n="prod_limon">Limón</h3>
+                        <p data-i18n="desc_limon">Extra Jam Palmelita - Lemon 335 g</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+           <a href="/contacto.html" data-i18n="footer_contact">Contact</a> <span class="footer-pipe">|</span>
+           <a href="/distribuidores.html" data-i18n="footer_distributors">Distributors - Professionals</a> <span class="footer-pipe">|</span>
+           <a href="/condiciones.html" data-i18n="footer_legal">Legal Conditions</a>
+        </div>
+        <p class="copyright" style="margin-top: 1rem;" data-i18n="footer_copyright">© 2026 Palmelitas Jams / Recommended sites jam.palmelita.com</p>
+    </footer>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
