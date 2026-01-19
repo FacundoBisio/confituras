@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jam.palmelita.com/sitemap.xml

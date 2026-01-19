@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://confitures.palmelita.com/sitemap.xml

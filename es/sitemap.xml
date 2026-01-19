@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://confituras.palmelita.es/index.html</loc>
+        <lastmod>2026-01-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="es" href="https://confituras.palmelita.es/index.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jam.palmelita.com/index.html"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://konfitueren.palmelita.com/index.html"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://confitures.palmelita.com/index.html"/>
+    </url>
+    <url>
+        <loc>https://confituras.palmelita.es/mermeladas.html</loc>
+        <lastmod>2026-01-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="es" href="https://confituras.palmelita.es/mermeladas.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jam.palmelita.com/mermeladas.html"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://konfitueren.palmelita.com/mermeladas.html"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://confitures.palmelita.com/mermeladas.html"/>
+    </url>
+    <url>
+        <loc>https://confituras.palmelita.es/contacto.html</loc>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://confituras.palmelita.es/noticias.html</loc>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://confituras.palmelita.es/canary.html</loc>
+        <priority>0.8</priority>
+    </url>
+</urlset>
