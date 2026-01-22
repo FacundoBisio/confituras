@@ -11,7 +11,7 @@ const translations = {
         hero_subtitle: "Islas Canarias",
         hero_since: "desde 1968",
         /* Page Titles */
-        title_home: "Inicio - Palmelita",
+        title_home: "MERMELADAS PALMELITA | Inicio",
         title_mermeladas: "Nuestras Mermeladas - Palmelita",
         title_products: "Productos - Palmelita",
         title_contact: "Contacto - Palmelita",
@@ -133,7 +133,7 @@ const translations = {
         hero_subtitle: "Canary Islands",
         hero_since: "since 1968",
         /* Page Titles */
-        title_home: "Home - Palmelita",
+        title_home: "PALMELITA JAMS | Home",
         title_mermeladas: "Our Jams - Palmelita",
         title_products: "Products - Palmelita",
         title_contact: "Contact - Palmelita",
@@ -252,7 +252,7 @@ const translations = {
         hero_subtitle: "Îles Canaries",
         hero_since: "depuis 1968",
         /* Page Titles */
-        title_home: "Accueil - Palmelita",
+        title_home: "CONFITURES PALMELITA | Accueil",
         title_mermeladas: "Nos Confitures - Palmelita",
         title_products: "Produits - Palmelita",
         title_contact: "Contact - Palmelita",
@@ -371,7 +371,7 @@ const translations = {
         hero_subtitle: "Kanarische Inseln",
         hero_since: "seit 1968",
         /* Page Titles */
-        title_home: "Startseite - Palmelita",
+        title_home: "PALMELITA KONFITÜREN | Startseite",
         title_mermeladas: "Unsere Marmeladen - Palmelita",
         title_products: "Produkte - Palmelita",
         title_contact: "Kontakt - Palmelita",
@@ -480,7 +480,8 @@ const translations = {
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+// Main Initialization
+function initPalmelita() {
     const langBtns = document.querySelectorAll(".lang-btn");
     
     // Base path support (GitHub Pages project sites: https://user.github.io/<repo>/)
@@ -552,10 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     langBtns.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
+        btn.addEventListener("click", () => {
             const lang = btn.id.split("-")[1]; // es/en/de/fr
             localStorage.setItem("palmelita_lang", lang);
 
@@ -563,13 +561,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentDomain = window.location.hostname;
 
             // Redirect if target domain is defined and different from current
-            // Check for localhost to avoid breaking local dev entirely (optional, but good practice per plan)
             if (targetDomain && targetDomain !== currentDomain && currentDomain !== "localhost" && currentDomain !== "127.0.0.1") {
                 const protocol = window.location.protocol;
-                // Preserve path and search, but update lang param if we want to be explicit, 
-                // though domain detection should handle it on the other side.
-                // We'll keep the path.
-                window.location.href = `${protocol}//${targetDomain}${window.location.pathname}${window.location.search}${window.location.hash}`;
+                window.location.assign(`${protocol}//${targetDomain}${window.location.pathname}${window.location.search}${window.location.hash}`);
                 return;
             }
 
@@ -584,7 +578,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             url.searchParams.set("lang", lang);
-            window.location.href = url.toString();
+            window.location.assign(url.toString());
         });
     });
 
@@ -671,7 +665,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Removed Splash/Reveal listeners since feature is removed
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPalmelita);
+} else {
+    initPalmelita();
+}
 
 // --- DYNAMIC LOGO LOGIC ---
 // --- DYNAMIC LOGO LOGIC ---
