@@ -947,3 +947,28 @@ footer::before {
     position: relative;
     z-index: 2; /* SIT ABOVE THE MASK */
 }
+/* Language Flag Styling */
+.lang-flag {
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.lang-flag:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.lang-flag.active {
+  outline: 2px solid #111;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.lang-flag img {
+  display: block;
+  width: 20px;
+  height: auto;
+}

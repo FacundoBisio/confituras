@@ -1,34 +1,3 @@
-// Domain mapping for language navigation
-const domainMap = {
-    es: "confituras.palmelita.es",
-    en: "jam.palmelita.com",
-    de: "konfitueren.palmelita.com",
-    fr: "confitures.palmelita.com"
-};
-
-// Language flag navigation - immediate execution
-function setupLanguageFlags() {
-    const langBtns = document.querySelectorAll(".lang-btn");
-    
-    langBtns.forEach((btn) => {
-        btn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const lang = this.id.replace("lang-", ""); // Extract language code
-            const targetDomain = domainMap[lang];
-            const currentPage = window.location.pathname.split("/").pop() || "index.html";
-            
-            console.log(`Redirecting to: https://${targetDomain}/${currentPage}`);
-            
-            // Immediate redirect
-            if (targetDomain) {
-                window.location.href = `https://${targetDomain}/${currentPage}`;
-            }
-        };
-    });
-}
-
 // Hamburger menu
 function setupHamburger() {
     const hamburger = document.getElementById("hamburger");
@@ -93,14 +62,12 @@ function setupHeroMask() {
 // Initialize everything when DOM is ready
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function() {
-        setupLanguageFlags();
         setupHamburger();
         setupLightbox();
         setupHeroMask();
     });
 } else {
     // DOM already loaded
-    setupLanguageFlags();
     setupHamburger();
     setupLightbox();
     setupHeroMask();

@@ -947,3 +947,4 @@ footer::before {
     position: relative;
     z-index: 2; /* SIT ABOVE THE MASK */
 }
+\n/* Language Flag Styling */\n.lang-flag {\n    display: inline-block;\n    transition: all 0.3s ease;\n    border: 2px solid transparent;\n    border-radius: 6px;\n    padding: 2px;\n}\n\n.lang-flag:hover {\n    opacity: 0.8;\n    transform: scale(1.1);\n}\n\n.lang-flag.active {\n    outline: 2px solid #111;\n    border-radius: 6px;\n    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);\n}\n\n.lang-flag img {\n    display: block;\n    width: 20px;\n    height: auto;\n}\n
