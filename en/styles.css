@@ -444,6 +444,7 @@ body.splash-page footer {
 .lang-switch {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 .lang-btn {
   border: none;
@@ -953,19 +954,20 @@ footer::before {
   display: inline-block;
   padding: 2px;
   border-radius: 6px;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   opacity: 1;
   filter: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: none;
 }
 
 .lang-flag:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 8px rgba(0,0,0,0.20);
+  opacity: 0.9;
+  transform: scale(1.06);
 }
 
 .lang-flag img {
   display: block;
   width: 20px;
   height: auto;
+  filter: none;
 }
