@@ -20,3 +20,24 @@ LOGO MAS GRande de navbar
     confituras.palmelita.es espanol
     konfitueren.palmelita.com alemán
     confitures.palmelita.com frances
+
+puntos de venta
+
+video no funciona/aparece
+
+
+crear trampa de seo con las palabras clave:
+- mermeladas canarias
+- frutas tropicales
+- elaboracion artesanal
+- mermeladas de frutas tropicales
+
+
+1. mermeladas.html es una pagina que contiene la informacion de todas las mermeladas al igual que la index me parece que hay una redundancia
+de datos y habria que eliminarla y las todos las paginas que tiene redireccionamiento a mermeladas.html hacerlas a 
+index.html#products-reveal-section 
+
+2. dentro de islas-canarias.html deberia primero tener como en puntos de venta igual que en la foto nada mas que en vez de decir
+
+3. quiero que aparezcan comom todas las banderas activas o en colores y ya esta, que estas puedan cumplir con la funcion de cambiar entre dominios
+asi simple como me lo aplicaste pero con esto de las banderas
