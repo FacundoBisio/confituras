@@ -16,16 +16,21 @@
   const SUPPORTED = new Set(["es", "en", "de", "fr"]);
 
   function detectLang() {
-    const host = window.location.hostname.toLowerCase().replace(/^www\./, "");
-    return HOST_TO_LANG[host] || "es";
+    const host = window.location.hostname.toLowerCase();
+    if (HOST_TO_LANG[host]) return HOST_TO_LANG[host];
+
+    // fallback local (/es/index.html)
+    const seg = window.location.pathname.split("/").filter(Boolean)[0];
+    if (SUPPORTED.has(seg)) return seg;
+
+    return "es";
   }
 
   function normalizedPath() {
-    // si estás en local tipo /en/contacto.html -> lo normaliza a /contacto.html
     const parts = window.location.pathname.split("/").filter(Boolean);
-    if (parts.length && SUPPORTED.has(parts[0])) parts.shift();
+    if (parts.length && SUPPORTED.has(parts[0])) parts.shift(); // remove /es /en /de /fr in local
 
-    const path = "/" + parts.join("/");
+    const path = "/" + (parts.join("/") || "index.html");
     return path + window.location.search + window.location.hash;
   }
 
@@ -35,15 +40,20 @@
 
     document.querySelectorAll(".lang-flag[data-lang]").forEach((a) => {
       const lang = a.dataset.lang;
-      const base = DOMAIN_BY_LANG[lang];
-      if (!base) return;
+      const target = DOMAIN_BY_LANG[lang];
 
-      // si el mismo archivo no existe en otro idioma, al menos cae a /index.html
-      const finalPath = path === "/" ? "/index.html" : path;
-      a.href = base + finalPath;
+      if (target) a.href = target + path;
 
-      // NO marcamos active (vos querés todas iguales)
-      a.removeAttribute("aria-current");
+      // visual state (si querés)
+      a.classList.toggle("active", lang === current);
+      a.setAttribute("aria-current", lang === current ? "true" : "false");
+
+      // si ya estás en el idioma actual, no navegues
+      a.addEventListener("click", (e) => {
+        if (lang === current) {
+          e.preventDefault();
+        }
+      });
     });
   });
 })();

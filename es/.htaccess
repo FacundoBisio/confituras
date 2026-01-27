@@ -6,7 +6,7 @@ RewriteRule ^(.*)/$ /$1 [R=301,L]
 
 
 ErrorDocument 404 /index.html
-Redirect 301 /canary.html /islas-canarias.html
+Redirect 301 /islas-canarias.html /canary.html
 
 # Fix products redirection (from old /productos to new mermeladas.html at root)
-RedirectMatch 301 ^/productos/?$ /mermeladas.html
+RedirectMatch 301 ^/productos/?$ /index.html
