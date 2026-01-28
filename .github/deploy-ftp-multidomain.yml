@@ -1,0 +1,78 @@
+name: Deploy websites to FTP
+
+on:
+  push:
+    branches: ["main"]
+
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy_es:
+    name: Deploy ES (confituras.palmelita.es)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: FTP Deploy ES
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER_ES }}
+          username: ${{ secrets.FTP_USERNAME_ES }}
+          password: ${{ secrets.FTP_PASSWORD_ES }}
+          local-dir: ./confituras.palmelita.es/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.github/**
+
+  deploy_en:
+    name: Deploy EN (jam.palmelita.com)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: FTP Deploy EN
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER_EN }}
+          username: ${{ secrets.FTP_USERNAME_EN }}
+          password: ${{ secrets.FTP_PASSWORD_EN }}
+          local-dir: ./jam.palmelita.com/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.github/**
+
+  deploy_de:
+    name: Deploy DE (konfitueren.palmelita.com)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: FTP Deploy DE
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER_DE }}
+          username: ${{ secrets.FTP_USERNAME_DE }}
+          password: ${{ secrets.FTP_PASSWORD_DE }}
+          local-dir: ./konfitueren.palmelita.com/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.github/**
+
+  deploy_fr:
+    name: Deploy FR (confitures.palmelita.com)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: FTP Deploy FR
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER_FR }}
+          username: ${{ secrets.FTP_USERNAME_FR }}
+          password: ${{ secrets.FTP_PASSWORD_FR }}
+          local-dir: ./confitures.palmelita.com/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.github/**
