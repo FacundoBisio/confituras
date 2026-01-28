@@ -971,3 +971,104 @@ footer::before {
   height: auto;
   filter: none;
 }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* evita que el contenido "salte" debajo del header */
+body {
+  padding-top: 0; /* si ves que se tapa algo, lo ajustamos con height real del nav */
+}
+
+/* anclas (cuando haces click productos) no quedan tapadas por el sticky */
+#products-reveal-section,
+#products,
+#hotel-section {
+  scroll-margin-top: 90px;
+}
+
+/* =========================
+   ✅ SECCIÓN HOTELES RESPONSIVE (cuadros)
+   Convertimos inline grid -> clase
+   ========================= */
+
+#hotel-section .hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  text-align: left;
+}
+
+#hotel-section .hotel-card {
+  background: rgba(255,255,255,0.80);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 1.2rem;
+  height: 100%;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  #hotel-section .hotel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* mobile */
+@media (max-width: 560px) {
+  #hotel-section .hotel-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  #hotel-section h2 {
+    font-size: 1.45rem !important;
+  }
+
+  #hotel-section p,
+  #hotel-section li {
+    font-size: 1rem !important;
+  }
+}
+
+/* =========================
+   ✅ PRODUCT GRID (por si en mobile queda apretado)
+   ========================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 460px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   ✅ FIX clásico: imágenes responsivas
+   ========================= */
+img {
+  max-width: 100%;
+  height: auto;
+}
