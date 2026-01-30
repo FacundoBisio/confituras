@@ -55,9 +55,9 @@
     </nav>
   </header>
 
-  <div class="content-wrapper watermark-bg responsive-wrapper" style="min-height:60vh;">
+  <div class="content-wrapper watermark-bg responsive-wrapper" style="min-height:60vh; --watermark-opacity: 0.08;">
     <section class="intro">
-      <div class="maestros-title">Maestros Confiteros</div>
+      <h1 class="maestros-title">Maestros Confiteros</h1>
       <div class="canary-title">
         <span>Islas Canarias</span>
         <span style="font-size:1.5rem; display:block; margin-top:-10px;">desde 1968</span>
@@ -76,16 +76,47 @@
     </section>
 
     <section class="products" id="hotel-section" style="margin-top: 3rem;">
+
+      <div class="responsive-grid-2">
+            
+            <!-- Text Column -->
+            <div style="font-family: var(--font-body); color: #333; line-height: 1.8;">
+                <p style="margin-bottom: 1.5rem;" data-i18n="about_text_1">
+                    <strong style="font-size:1.2rem; color:#d10029;">Confituras Palmelita</strong> nace en 1968 de la mano del maestro pastelero Werner Bittermann en su pequeño obrador de Bajamar en Tenerife.
+                </p>
+                <p style="margin-bottom: 1.5rem;" data-i18n="about_text_2">
+                    El profundo conocimiento de recetas centroeuropeas tradicionales unidas a la excelentes frutas que se dan en Canarias hicieron que este producto destacara desde el primer momento por su alta calidad.
+                </p>
+                <p style="margin-bottom: 1.5rem;" data-i18n="about_text_3">
+                    Desde entonces, la filosofía de producto no ha cambiado, solo las mejores selecciones, sin conservantes ni colorantes, con frutas tropicales, de Canarias y de temporada como lo son la guayaba, el mango, la piña, la maracuyá, el higo pico, el higo tinto, etc. Un producto excelente, un producto de Canarias.
+                </p>
+                
+                <h3 style="font-family: 'Playfair Display', serif; color: #d10029; font-size: 2rem; margin-top: 2rem; text-align: left; font-style: italic;" data-i18n="about_quote">
+                    «mucho más...<br>que una mermelada»
+                </h3>
+            </div>
+
+            <!-- Image Column -->
+            <div class="responsive-img-container">
+                <img src="assets/images/producto-info.jpg" alt="Mermeladas Palmelita Bodegón">
+            </div>
+
+        </div>
+
+
+      <!-- Separador visual entre secciones -->
+      <div style="width: 60%; height: 2px; background-color: #d10029; margin: 4rem auto 4rem auto;"></div>
+
       <div style="max-width: 980px; margin: 0 auto; padding: 0 1.2rem; text-align: center; font-family: var(--font-body); color:#333; line-height:1.8;">
 
         <h2 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 0.8rem;">
-          Confituras Palmelita para Hoteles y Desayunos Premium
+          Mermeladas Premium para Experiencias Hoteleras Distintivas
         </h2>
 
         <p style="font-size: 1.08rem; margin-bottom: 1.2rem;">
-          Si tu hotel busca <strong>elevar la experiencia del desayuno</strong> con un producto auténtico y diferencial,
-          Palmelita ofrece una selección de <strong>mermeladas canarias artesanales</strong> elaboradas con frutas tropicales
-          y tradición desde <strong>1968</strong>.
+          Transforma el servicio de desayuno en algo verdaderamente memorable. Nuestras <strong>mermeladas artesanales de Canarias</strong> 
+          combinan frutas tropicales y técnicas tradicionales, perfeccionadas durante <strong>cinco décadas</strong> 
+          para ofrecer una experiencia de sabor auténtico que tus huéspedes recordarán.
         </p>
 
         <div style="width: 100%; height: 1px; background-color: #d10029; margin: 1.8rem 0;"></div>
@@ -94,60 +125,37 @@
         <div class="hotel-grid">
           <div class="hotel-card">
             <h3 style="font-family: var(--font-heading); font-size: 1.2rem; margin: 0 0 0.4rem 0;">
-              Diferenciación real
+              Carácter Auténtico
             </h3>
             <p style="margin:0; font-size:1rem;">
-              Sabores tropicales (papaya, mango, guayaba, piña…) que aportan
-              <strong>identidad canaria</strong> y un toque gourmet al buffet.
+              Destaca con sabores exóticos—papaya, mango, guayaba, piña—que muestran la 
+              <strong>esencia única de las Islas Canarias</strong> y aportan sofisticación a tu servicio de desayuno.
             </p>
           </div>
 
           <div class="hotel-card">
             <h3 style="font-family: var(--font-heading); font-size: 1.2rem; margin: 0 0 0.4rem 0;">
-              Calidad constante
+              Excelencia Confiable
             </h3>
             <p style="margin:0; font-size:1rem;">
-              Elaboración cuidada para lograr un producto <strong>estable, sabroso y consistente</strong>,
-              ideal para servicio profesional y alto volumen.
+              Los métodos artesanales aseguran <strong>sabor y textura confiables</strong> en cada lote, 
+              perfectos para entornos de hostelería profesional y servicio de alta demanda.
             </p>
           </div>
 
           <div class="hotel-card">
             <h3 style="font-family: var(--font-heading); font-size: 1.2rem; margin: 0 0 0.4rem 0;">
-              Para todos los perfiles
+              Opciones Inclusivas
             </h3>
             <p style="margin:0; font-size:1rem;">
-              Opciones tradicionales y <strong>diet/sin azúcar</strong> para acompañar tendencias de bienestar
-              sin perder el sabor.
+              Recetas clásicas junto con <strong>variedades reducidas en azúcar y diet</strong> significan que puedes 
+              atender a huéspedes conscientes de la salud sin comprometer el sabor.
             </p>
           </div>
         </div>
 
-        <div style="margin-top: 1.6rem; text-align:left;">
-          <h3 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.6rem;">
-            Un surtido pensado para el buffet
-          </h3>
 
-          <p style="margin: 0 0 0.8rem 0; font-size:1.02rem;">
-            Nuestro catálogo incluye referencias que funcionan especialmente bien en desayunos:
-          </p>
 
-          <ul style="margin: 0; padding-left: 1.1rem; font-size: 1.02rem; line-height:1.7;">
-            <li><strong>Papaya y Naranja:</strong> equilibrio perfecto entre dulce tropical y toque cítrico.</li>
-            <li><strong>Mango:</strong> ideal para maridajes con quesos y panes artesanos.</li>
-            <li><strong>Guayaba:</strong> sabor auténtico, muy valorado por huéspedes internacionales.</li>
-            <li><strong>Diet / sin azúcar:</strong> alternativa clave para propuestas saludables.</li>
-          </ul>
-        </div>
-
-        <div style="width: 100%; height: 1px; background-color: #d10029; margin: 1.8rem 0;"></div>
-
-        <p style="margin-bottom: 1.2rem; font-size: 1.05rem;">
-          ¿Querés sumar Palmelita al desayuno de tu hotel o a tu tienda gourmet?
-          <strong>Contactanos</strong> y te asesoramos con opciones para distribución profesional.
-        </p>
-
-      </div>
     </section>
 
     <section class="products" id="hotel-section" style="margin-top: 3rem;">
