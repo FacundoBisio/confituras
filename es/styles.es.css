@@ -21,6 +21,7 @@
 .watermark-bg {
   position: relative;
   z-index: 1;
+  --watermark-opacity: 0.15; /* Default opacity, can be overridden inline */
 }
 
 .watermark-bg::before {
@@ -33,7 +34,7 @@
   height: 90vh; /* Fixed height relative to viewport */
   background: url("assets/images/logo.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.15;
+  opacity: var(--watermark-opacity); /* Use custom variable */
   z-index: -1;
   filter: blur(0.5px); /* Much sharper as requested */
   pointer-events: none; /* Ensure it doesn't interfere with clicks */

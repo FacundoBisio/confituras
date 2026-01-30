@@ -21,6 +21,7 @@
 .watermark-bg {
   position: relative;
   z-index: 1;
+  --watermark-opacity: 0.15; /* Default opacity, can be overridden inline */
 }
 
 .watermark-bg::before {
@@ -33,7 +34,7 @@
   height: 90vh; /* Fixed height relative to viewport */
   background: url("assets/images/logo.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.15;
+  opacity: var(--watermark-opacity); /* Use custom variable */
   z-index: -1;
   filter: blur(0.5px); /* Much sharper as requested */
   pointer-events: none; /* Ensure it doesn't interfere with clicks */
@@ -805,148 +806,147 @@ footer::before {
 
 /* --- Responsive Utility Classes --- */
 .responsive-wrapper {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-    position: relative;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  position: relative;
 }
 
 .responsive-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
 .responsive-img-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .responsive-img-container img {
-    max-width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .responsive-logos-grid {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 3rem; 
-    flex-wrap: wrap; 
-    margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
 /* --- Global Responsive Adjustments --- */
 @media (max-width: 768px) {
-    /* Wrappers */
-    .responsive-wrapper {
-        margin: 2rem auto;
-        padding: 0 1.5rem;
-    }
+  /* Wrappers */
+  .responsive-wrapper {
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
 
-    /* Grids to Single Column */
-    .responsive-grid-2 {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
+  /* Grids to Single Column */
+  .responsive-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
 
-    /* Reverse order on mobile if needed (Text first, Image second default usually okay, 
+  /* Reverse order on mobile if needed (Text first, Image second default usually okay, 
        but sometimes we want image first. For now default stacking is fine) */
-    
-    /* Text Adjustments */
-    .intro .maestros-title {
-        font-size: 2.5rem;
-    }
-    .intro .canary-title {
-        font-size: 1.8rem;
-    }
-    .intro .canary-title span {
-        font-size: 1.2rem !important;
-    }
 
-    /* Navigation Links in Hero (About/Sales) */
-    .intro div:nth-of-type(3) {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        font-size: 1rem;
-    }
-    .intro div:nth-of-type(3) span:nth-child(2) {
-        display: none; /* Hide the pipe separator */
-    }
-    .intro div:nth-of-type(3) span[style*="border"],
-    .intro div:nth-of-type(3) a[href*="puntos_venta.html"] {
-        margin: 0 !important;
-    }
+  /* Text Adjustments */
+  .intro .maestros-title {
+    font-size: 2.5rem;
+  }
+  .intro .canary-title {
+    font-size: 1.8rem;
+  }
+  .intro .canary-title span {
+    font-size: 1.2rem !important;
+  }
 
-    /* Text Column Alignment */
-    .responsive-grid-2 div[style*="text-align: right"] h3 {
-        text-align: center !important;
-        margin-top: 1.5rem !important;
-    }
+  /* Navigation Links in Hero (About/Sales) */
+  .intro div:nth-of-type(3) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  .intro div:nth-of-type(3) span:nth-child(2) {
+    display: none; /* Hide the pipe separator */
+  }
+  .intro div:nth-of-type(3) span[style*="border"],
+  .intro div:nth-of-type(3) a[href*="puntos_venta.html"] {
+    margin: 0 !important;
+  }
 
-    /* Footer */
-    footer {
-        padding: 3rem 1.5rem 1.5rem; /* Reduce top padding slightly */
-    }
-    .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-    }
-    /* Hide pipes in footer only on mobile? Or reform them.
+  /* Text Column Alignment */
+  .responsive-grid-2 div[style*="text-align: right"] h3 {
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+  }
+
+  /* Footer */
+  footer {
+    padding: 3rem 1.5rem 1.5rem; /* Reduce top padding slightly */
+  }
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  /* Hide pipes in footer only on mobile? Or reform them.
        Simpler to just hide them if they are text nodes? 
        Actually, in HTML they are often text nodes "|". 
        We might need to wrap them or just accept they sit there or use CSS to hide generated content if we change HTML.
        Plan: In HTML update, I will wrap pipes in <span> or replace with css borders if possible, 
        but given existing HTML has text pipes, I will wrap them in spans with class 'footer-pipe' in the HTML updates.
     */
-    .footer-pipe {
-        display: none;
-    }
+  .footer-pipe {
+    display: none;
+  }
 }
-
 
 /* Hero White Overlay */
 .hero-white-overlay {
-    position: absolute; /* Cover the splash container */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff; /* Explicit white background */
-    z-index: 10; /* Sit above the video (default hierarchy) */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.1s linear; /* Smooth fading */
+  position: absolute; /* Cover the splash container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff; /* Explicit white background */
+  z-index: 10; /* Sit above the video (default hierarchy) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.1s linear; /* Smooth fading */
 }
 
 .hero-white-overlay .overlay-logo {
-    max-width: 60%;
-    height: auto;
-    object-fit: contain;
+  max-width: 60%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Hero Mask Background (Behind Video) */
 .hero-mask-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff;
-    z-index: 1; /* Above global background, below video */
-    transition: opacity 0.1s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 1; /* Above global background, below video */
+  transition: opacity 0.1s linear;
 }
 
 /* Ensure Video Sits Above Mask */
 .splash-video-wrapper {
-    position: relative;
-    z-index: 2; /* SIT ABOVE THE MASK */
+  position: relative;
+  z-index: 2; /* SIT ABOVE THE MASK */
 }
 
 /* Language flags: always visible / colored */
@@ -972,7 +972,6 @@ footer::before {
   filter: none;
 }
 
-
 header {
   position: sticky;
   top: 0;
@@ -980,7 +979,7 @@ header {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* evita que el contenido "salte" debajo del header */
@@ -1008,8 +1007,8 @@ body {
 }
 
 #hotel-section .hotel-card {
-  background: rgba(255,255,255,0.80);
-  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 14px;
   padding: 1.2rem;
   height: 100%;
