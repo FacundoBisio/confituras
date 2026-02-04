@@ -1341,3 +1341,845 @@ img {
   .news-container { padding-left: 15px !important; padding-right: 15px !important; }
   .news-container img, .news-item img { width: 100% !important; height: auto !important; display:block; }
 }
+
+/* =========================================================
+   RESPONSIVE PATCH (<=1023px) — NO TOCA DESKTOP (>=1024px)
+   Pegar al FINAL del CSS principal
+   ========================================================= */
+
+/* ---------- Base anti-overflow + legibilidad ---------- */
+@media (max-width: 1023px) {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden; /* corta scroll horizontal */
+  }
+
+  /* Evita que algún contenedor “empuje” ancho por 100vw */
+  [style*="100vw"],
+  .vw,
+  .w-vw {
+    max-width: 100%;
+  }
+
+  /* Media nunca debe romper layout */
+  img,
+  video,
+  svg,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Textos largos: mejor corte */
+  p,
+  li,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  /* Contenedor genérico (si usás .container) */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ---------- Tipografía responsive (mobile-first) ---------- */
+@media (max-width: 1023px) {
+  body {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1 { font-size: clamp(26px, 5.5vw, 36px); line-height: 1.15; }
+  h2 { font-size: clamp(22px, 4.6vw, 30px); line-height: 1.2; }
+  h3 { font-size: clamp(18px, 3.8vw, 24px); line-height: 1.25; }
+  p, li { font-size: 16px; line-height: 1.6; }
+
+  /* Bloques de texto largos: no full-width infinito */
+  main p,
+  main li,
+  .content p,
+  .content li {
+    max-width: 68ch;
+  }
+}
+
+/* ---------- Navbar / Hamburger (asumiendo tu HTML típico) ---------- */
+@media (max-width: 1023px) {
+  header,
+  nav {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .logo img {
+    display: block;
+    height: 40px;
+    width: auto;
+    max-width: 60vw;
+  }
+
+  /* Botón hamburger: táctil y arriba de todo */
+  .hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 1001;
+  }
+
+  /* Menú: lo convierto en “panel” overlay */
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+    z-index: 1000;
+  }
+
+  /* Panel interno (ul) */
+  .nav-links ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(86vw, 380px);
+    margin: 0;
+    padding: 80px 16px 16px;
+    list-style: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    /* Fondo del drawer */
+    background: #ffffff;
+    transform: translateX(100%);
+    transition: transform 220ms ease;
+  }
+
+  /* Estado abierto (tu JS suele togglear .active) */
+  .nav-links.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links.active ul {
+    transform: translateX(0);
+  }
+
+  /* Links grandes (tap target 44px) */
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 12px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+  }
+
+  /* Separación entre ítems */
+  .nav-links li + li {
+    margin-top: 6px;
+  }
+
+  /* Focus/hover visibles */
+  .nav-links a:focus-visible,
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* Si tenés “flags/languages” en el nav, que no exploten */
+  .lang-switch,
+  .language-switch,
+  .flags,
+  .nav-flags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 6px 0;
+  }
+
+  .lang-switch img,
+  .language-switch img,
+  .flags img,
+  .nav-flags img {
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+    border-radius: 999px;
+  }
+}
+
+/* ---------- Anti “elementos que se salen”: grids/cards/hero ---------- */
+@media (max-width: 1023px) {
+  /* Grids comunes (cubriendo nombres típicos) */
+  .grid,
+  .cards,
+  .card-grid,
+  .cards-grid,
+  .products,
+  .products-grid,
+  .gallery,
+  .gallery-grid {
+    max-width: 100%;
+  }
+
+  /* Fuerzo 1 col en mobile y 2 cols en tablet cuando aplique */
+  .card-grid,
+  .cards-grid,
+  .products-grid,
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    .card-grid,
+    .cards-grid,
+    .products-grid,
+    .gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+  }
+
+  /* Card típica: que no se deforme */
+  .card,
+  .product-card,
+  .item-card {
+    min-width: 0; /* clave para evitar overflow en grid/flex */
+  }
+
+  /* Imágenes dentro de cards */
+  .card img,
+  .product-card img,
+  .item-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Hero: evitar alturas fijas destructivas */
+  .hero,
+  .hero-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero img,
+  .hero-section img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+/* ---------- Forms: mobile UX + iOS ---------- */
+@media (max-width: 1023px) {
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 16px; /* evita zoom en iOS */
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  button,
+  .btn,
+  a.button {
+    min-height: 44px;
+  }
+}
+
+/* ---------- Links/Buttons: tap area + estados ---------- */
+@media (max-width: 1023px) {
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Si tenés botones tipo link (CTA), hacelos más cómodos */
+  .btn,
+  .button,
+  .cta,
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    min-height: 44px;
+  }
+
+  /* Hover en mobile “no” existe, pero que no moleste */
+  a:hover,
+  button:hover {
+    filter: none;
+  }
+}
+
+/* ---------- Footer: apilar y espacio táctil ---------- */
+@media (max-width: 1023px) {
+  footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer,
+  .footer-inner,
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 0;
+  }
+}
+
+/* ---------- Performance básica mobile: sombras/pesos ---------- */
+@media (max-width: 480px) {
+  /* Si hay sombras pesadas globales, las suavizo solo en mobile */
+  .card,
+  .product-card,
+  .item-card,
+  .btn,
+  .button {
+    box-shadow: none !important;
+  }
+}
+
+
+/* ===== FLAGS FIX (<=1023px): que se vean completas, no “encogidas” ===== */
+@media (max-width: 1023px) {
+  /* Contenedores típicos de banderas (ajusta si usás otro) */
+  .lang-switch,
+  .language-switch,
+  .flags,
+  .nav-flags,
+  .language-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Links/botones que envuelven banderas */
+  .lang-switch a,
+  .language-switch a,
+  .flags a,
+  .nav-flags a,
+  .language-selector a,
+  .lang-switch button,
+  .language-switch button,
+  .flags button,
+  .nav-flags button,
+  .language-selector button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px; /* tap target */
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  /* La imagen de la bandera: NO recortar, NO deformar */
+  .lang-switch img,
+  .language-switch img,
+  .flags img,
+  .nav-flags img,
+  .language-selector img {
+    display: block;
+    flex: 0 0 auto;
+    width: 40px;              /* tamaño visible */
+    height: 28px;             /* rectangular tipo bandera */
+    max-width: none;          /* evita que herede max-width:100% raro */
+    max-height: none;
+    object-fit: contain;      /* clave: se ve completa */
+    object-position: center;
+    border-radius: 6px;       /* si querés redondeo leve */
+    background: transparent;  /* o #fff si hay fondo oscuro */
+  }
+}
+
+/* Mobile chico: un toque más chico si te queda muy grande */
+@media (max-width: 480px) {
+  .lang-switch img,
+  .language-switch img,
+  .flags img,
+  .nav-flags img,
+  .language-selector img {
+    width: 36px;
+    height: 26px;
+  }
+}
+
+/* ===== Slight extra side padding (<=1023px) ===== */
+@media (max-width: 1023px) {
+  /* Ajuste suave global para secciones */
+  section,
+  footer,
+  main {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Si existe .container, que sea el que mande */
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* La página legal ya tiene padding propio:
+     lo reduzco un toque para que no quede “doble padding” */
+  .legal-container {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  section,
+  footer,
+  main,
+  .container {
+    padding-left: 16px; /* en mobile chico no conviene pasarse */
+    padding-right: 16px;
+  }
+}
+
+/* ===== Emergency nav UL fix for pages where UL is not wrapped (<=1023px) ===== */
+@media (max-width: 1023px) {
+  nav > ul {
+    display: none; /* en mobile el ul suelto rompe: lo oculto */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Igual el idioma queda visible */
+  .lang-switch {
+    margin-left: auto;
+  }
+}
+
+/* ===== Fix sub-nav dentro de .intro (sobre nosotros | puntos de venta) ===== */
+@media (max-width: 1023px) {
+  /* El 2do div dentro de .intro (después de .canary-title) es el que contiene el mini menú */
+  .intro > div:nth-of-type(2) {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: 14px !important;
+    text-align: center;
+  }
+
+  /* Link "sobre nosotros": sacarle el margin inline que lo empuja y hacerlo táctil */
+  .intro > div:nth-of-type(2) a {
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    white-space: nowrap; /* evita cortes raros */
+  }
+
+  /* Separador "|" (span del medio) */
+  .intro > div:nth-of-type(2) > span:not([style*="border"]) {
+    margin: 0 !important;
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  /* Pill "puntos de venta" (span con borde inline) */
+  .intro > div:nth-of-type(2) > span[style*="border"] {
+    margin: 0 !important;                /* mata margin 0 1rem inline */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;                    /* tap target */
+    padding: 8px 14px !important;        /* más cómodo */
+    white-space: nowrap;                 /* CLAVE: no se parte "puntos de venta" */
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+}
+
+/* En mobile chico: si igual no entra, apilo y saco el "|" */
+@media (max-width: 420px) {
+  .intro > div:nth-of-type(2) {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .intro > div:nth-of-type(2) > span:not([style*="border"]) {
+    display: none; /* oculto el | para que no quede colgado */
+  }
+}
+/* =========================
+   NAVBAR — layout 1 fila como la 1ra foto (<=1023px)
+   Pegar al final de styles.es.css
+   ========================= */
+@media (max-width: 1023px) {
+  header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: nowrap;           /* CLAVE: no baja nada a otra fila */
+    padding: 10px 14px;
+  }
+
+  /* Logo: que no sea gigante y permita espacio al resto */
+  header nav .logo {
+    flex: 1 1 auto;
+    min-width: 0;                /* CLAVE en flex para que pueda “encogerse” */
+  }
+
+  header nav .logo img,
+  header nav .logo .dynamic-logo {
+    height: 42px;                /* ajustá 40–48 según te guste */
+    width: auto;
+    max-width: 52vw;             /* evita que se coma todo el ancho */
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Banderas: fila compacta (sin wrap) */
+  header nav .lang-switch {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  header nav .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;             /* tap target decente sin inflar */
+    min-height: 36px;
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  header nav .lang-switch img {
+    width: 26px !important;
+    height: 19px !important;     /* proporción 24x18-ish */
+    object-fit: contain !important;
+    border-radius: 4px;
+    display: block;
+  }
+
+  /* Hamburger siempre al final, sin romper fila */
+  header nav .hamburger {
+    flex: 0 0 auto;
+    margin-left: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    border-radius: 12px;
+    position: relative;
+    z-index: 1001;
+  }
+
+  /* Si tu .nav-links overlay existe, que NO afecte el alto del nav */
+  header nav .nav-links {
+    position: fixed;             /* overlay fuera del flujo */
+    inset: 0;
+    z-index: 1000;
+  }
+}
+
+/* Extra: en pantallas MUY chicas, achico un toque para que entren sí o sí */
+@media (max-width: 390px) {
+  header nav {
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  header nav .logo img,
+  header nav .logo .dynamic-logo {
+    height: 38px;
+    max-width: 50vw;
+  }
+
+  header nav .lang-switch img {
+    width: 24px !important;
+    height: 18px !important;
+  }
+}
+/* Logo un poco más grande en mobile/tablet */
+@media (max-width: 1023px) {
+  header nav .logo img,
+  header nav .logo .dynamic-logo {
+    height: 48px;     /* antes 42px */
+    max-width: 56vw;  /* un toque más de ancho permitido */
+  }
+}
+
+/* En pantallas muy chicas, igual mantenelo apenas más grande */
+@media (max-width: 390px) {
+  header nav .logo img,
+  header nav .logo .dynamic-logo {
+    height: 44px;     /* antes 38px */
+    max-width: 54vw;
+  }
+}
+
+/* =========================
+   CANARY PAGE — responsive fixes (<=1023px)
+   Sin tocar HTML
+   ========================= */
+@media (max-width: 1023px) {
+  /* El wrapper principal de canary: el div grande después del intro */
+  .content-wrapper > div[style*="max-width: 1000px"] {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Títulos y párrafos: un poco más fluidos */
+  .content-wrapper > div[style*="max-width: 1000px"] h2 {
+    font-size: clamp(22px, 4.8vw, 30px) !important;
+    line-height: 1.2;
+  }
+
+  .content-wrapper > div[style*="max-width: 1000px"] p {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* ===== CLAVE: el grid inline de 2 columnas -> 1 columna =====
+     Selecciono el div que tiene grid-template-columns: 1fr 1fr
+  */
+  .content-wrapper div[style*="display: grid"][style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  /* Imagen: centrada, sin desbordar, con sombra más liviana */
+  .content-wrapper img[alt*="Frutas tropicales"] {
+    width: 100% !important;
+    max-width: 420px !important;
+    height: auto !important;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12) !important;
+  }
+
+  /* Separadores rojos: menos “aire” en mobile */
+  .content-wrapper div[style*="height: 2px"][style*="#d10029"] {
+    margin: 1.6rem 0 !important;
+  }
+
+  /* Secciones centradas con max-width inline: mantener padding */
+  .content-wrapper div[style*="max-width: 800px"],
+  .content-wrapper div[style*="max-width: 700px"] {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+/* Mobile chico: todavía más cómodo */
+@media (max-width: 480px) {
+  .content-wrapper > div[style*="max-width: 1000px"] {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* El h2 grande “Jardín del Atlántico” */
+  .content-wrapper h2[style*="font-size: 2.2rem"] {
+    font-size: 1.65rem !important;
+  }
+
+  /* Reduce el gap que pusiste en el grid (3rem) */
+  .content-wrapper div[style*="display: grid"][style*="grid-template-columns: 1fr 1fr"] {
+    gap: 14px !important;
+  }
+}
+
+/* =========================
+   PUNTOS DE VENTA — Responsive patch (<=1023px)
+   Objetivo: logos 2 cols en mobile, 4 en tablet, mejor padding/lectura
+   ========================= */
+@media (max-width: 1023px) {
+
+  /* 1) Padding lateral del contenido (el div inline max-width:900px) */
+  .content-wrapper div[style*="max-width: 900px"] {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* 2) Sub-menú en intro (sobre nosotros | puntos de venta) */
+  .intro > div:nth-of-type(2) {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 10px;
+    text-align: center;
+  }
+  .intro > div:nth-of-type(2) a {
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .intro > div:nth-of-type(2) > span[style*="border"] {
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 14px !important;
+    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 3) LOGOS GRID: 2 columnas en mobile, centrado y consistente */
+  .responsive-logos-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 cols */
+    gap: 14px;
+    align-items: center;
+    justify-items: center;
+    margin: 14px auto 0 auto;
+    padding: 0;
+  }
+
+  /* Reset de tamaños inline para que la grilla mande */
+  .responsive-logos-grid img {
+    width: 100% !important;
+    height: 64px !important;         /* altura uniforme */
+    max-width: 160px;                /* evita gigantes */
+    object-fit: contain !important;  /* NO deformar */
+    display: block;
+  }
+
+  /* 4) Texto: mejor lectura */
+  .content-wrapper p[style*="font-size: 1.1rem"],
+  .content-wrapper p[style*="font-size: 1.08rem"] {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+
+  /* 5) HOTEL GRID (cards): 1 columna en mobile, 2 en tablet */
+  .hotel-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .hotel-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  /* 6) Divs con padding inline (0 1.2rem): evitar doble padding fuerte */
+  div[style*="padding: 0 1.2rem"] {
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+}
+
+/* Tablet: logos 4 columnas + cards 2 columnas */
+@media (min-width: 481px) and (max-width: 768px) {
+  .responsive-logos-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 16px;
+  }
+
+  .responsive-logos-grid img {
+    height: 72px !important;
+    max-width: 180px;
+  }
+
+  .hotel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* Mobile chico: mantener 2 columnas pero más compacto */
+@media (max-width: 380px) {
+  .responsive-logos-grid {
+    gap: 10px;
+  }
+
+  .responsive-logos-grid img {
+    height: 56px !important;
+    max-width: 150px;
+  }
+
+  /* si el "|" molesta en muy chico, lo oculto */
+  .intro > div:nth-of-type(2) > span:not([style*="border"]) {
+    display: none;
+  }
+}

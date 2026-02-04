@@ -72,7 +72,14 @@
 
         <!-- Right Side: Form -->
         <div class="contact-form">
-            <form action="#" method="POST"> <!-- Placeholder action -->
+            <form class="js-mail-form"
+                action="https://formsubmit.co/confituras@palmelitas.es"
+                method="POST">
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="Kontakt web - Palmelita">
+            <input type="text" name="_honey" style="display:none"> 
                 <div class="form-group">
                     <label for="email">KONTAKT-E-MAIL</label>
                     <input type="email" id="email" name="email" required>
@@ -88,7 +95,7 @@
                     <textarea id="message" name="message" required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn" onclick="alert('Sendefunktion in Entwicklung.'); return false;">SENDEN</button>
+                <button type="submit" class="submit-btn">SENDEN</button>
             </form>
         </div>
     </section>
@@ -103,6 +110,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="assets/js/forms-mail.js"></script>
     <script src="assets/js/lang-switch.js"></script>
 </body>
 </html>

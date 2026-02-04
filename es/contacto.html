@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contacta con Confituras Palmelita. Envíanos tus dudas o comentarios.">    <title>Contacto - Palmelita</title>
-    <link rel="stylesheet" href="styles.es.css?v=20260126">
+    <link rel="stylesheet" href="/styles.es.css?v=20260126">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
 </head>
@@ -40,7 +40,7 @@
                     <li><a href="index.html#products-reveal-section">productos</a></li>
                     <li><a href="contacto.html" class="active">contacto</a></li>
                     <li><a href="noticias.html">noticias</a></li>
-                    <li><a href="canary.html" style="color: #333; font-weight: normal; text-decoration: none;">canarias paraíso natural</a></li>
+                    <li><a href="canary.html" style="color: #333; font-weight: normal; text-decoration: none;">islas canarias paraíso natural</a></li>
                 </ul>
             </div>
             <div class="lang-switch">
@@ -69,7 +69,15 @@
 
         <!-- Right Side: Form -->
         <div class="contact-form">
-            <form action="#" method="POST"> <!-- Placeholder action -->
+            <form class="js-mail-form"
+                action="https://formsubmit.co/confituras@palmelitas.es"
+                method="POST">
+            <input type="hidden" name="_subject" value="Contacto web - Palmelita">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <!-- Honeypot anti-spam (no lo ve el usuario) -->
+            <input type="text" name="_honey" style="display:none">
                 <div class="form-group">
                     <label for="email">E-MAIL DE CONTACTO</label>
                     <input type="email" id="email" name="email" required>
@@ -85,7 +93,7 @@
                     <textarea id="message" name="message" required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn" onclick="alert('Funcionalidad de envío en desarrollo.'); return false;">ENVIAR</button>
+                <button type="submit" class="submit-btn">ENVIAR</button>
             </form>
         </div>
     </section>
@@ -100,6 +108,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="assets/js/forms-mail.js"></script>
     <script src="assets/js/lang-switch.js"></script>
 </body>
 </html>
