@@ -5,7 +5,8 @@
     <meta name="google-site-verification" content="bM1TQjsfZLq2ex4jFAd3CxbUbOpG1ba9an62MgWtpJo" />
     
     <!-- Google Analytics -->
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7G3SY6CBGD"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -15,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Información para distribuidores y profesionales interesados en vender Mermeladas Palmelita.">    <title>Distribuidores - Palmelita</title>
-    <link rel="stylesheet" href="/styles.es.css?v=20260126">
+    <link rel="stylesheet" href="/styles.es.css?v=20260205">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
 </head>
@@ -52,7 +53,7 @@
     </header>
 
     <section class="intro">
-        <div class="maestros-title">Maestros Confiteros</div>
+        <h1 class="maestros-title">Maestros Confiteros</h1>
         <div class="canary-title"><span>Distribuidores - Profesionales</span> <span style="font-size: 1.5rem; display:block; margin-top: -10px;">desde 1968</span></div>
     </section>
 
@@ -74,14 +75,12 @@
         <!-- Right Side: Form -->
         <div class="contact-form">
             <form class="js-mail-form"
-                action="https://formsubmit.co/confituras@palmelitas.es"
+                action="/contact/send.php"
                 method="POST">
-            <input type="hidden" name="_subject" value="Distribuidores/Profesionales - Palmelita">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
 
             <!-- Honeypot anti-spam (no lo ve el usuario) -->
-            <input type="text" name="_honey" style="display:none">
+            <input type="text" name="company_fax" value="" autocomplete="new-password" inputmode="none" tabindex="-1" aria-hidden="true" class="hp" />
+            <input type="hidden" name="form_type" value="distribuidores">
                 <div class="form-group">
                     <label for="email">E-MAIL DE CONTACTO</label>
                     <input type="email" id="email" name="email" required>
@@ -112,6 +111,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="assets/js/forms-mail.js"></script>
     <script src="assets/js/lang-switch.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contacta con Confituras Palmelita. Envíanos tus dudas o comentarios.">    
     <title>Kontakt - Palmelita</title>
-    <link rel="stylesheet" href="/styles.de.css?v=20260126">
+    <link rel="stylesheet" href="/styles.de.css?v=20260205">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
 </head>
@@ -73,13 +73,13 @@
         <!-- Right Side: Form -->
         <div class="contact-form">
             <form class="js-mail-form"
-                action="https://formsubmit.co/confituras@palmelitas.es"
+                action="/contact/send.php"
                 method="POST">
 
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="Kontakt web - Palmelita">
-            <input type="text" name="_honey" style="display:none"> 
+            <!-- Honeypot anti-spam (für Benutzer unsichtbar) -->
+            <input type="text" name="company_fax" value="" autocomplete="new-password" inputmode="none" tabindex="-1" aria-hidden="true" class="hp" />
+            <input type="hidden" name="form_type" value="contacto">
+
                 <div class="form-group">
                     <label for="email">KONTAKT-E-MAIL</label>
                     <input type="email" id="email" name="email" required>

@@ -40,6 +40,16 @@
   pointer-events: none; /* Ensure it doesn't interfere with clicks */
 }
 
+/* Honeypot Anti-Spam (Hidden) */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Reset & Base */
 * {
   margin: 0;

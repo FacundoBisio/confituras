@@ -9,25 +9,29 @@
       sending: 'Enviando…',
       ok: '¡Listo! Mensaje enviado.',
       error: 'Ups. No se pudo enviar. Probá de nuevo.',
-      invalid: 'Revisá tu email y el mensaje.'
+      invalid: 'Revisá tu email y el mensaje.',
+      ratelimit: 'Demasiados intentos. Esperá unos minutos.'
     },
     en: {
       sending: 'Sending…',
       ok: 'Done! Message sent.',
       error: 'Oops. Could not send. Please try again.',
-      invalid: 'Please check your email and message.'
+      invalid: 'Please check your email and message.',
+      ratelimit: 'Too many attempts. Wait a few minutes.'
     },
     de: {
       sending: 'Wird gesendet…',
       ok: 'Fertig! Nachricht gesendet.',
       error: 'Ups. Senden fehlgeschlagen. Bitte erneut versuchen.',
-      invalid: 'Bitte E-Mail und Nachricht prüfen.'
+      invalid: 'Bitte E-Mail und Nachricht prüfen.',
+      ratelimit: 'Zu viele Versuche. Bitte warte ein paar Minuten.'
     },
     fr: {
       sending: 'Envoi…',
-      ok: 'C’est envoyé !',
+      ok: "C'est envoyé !",
       error: 'Oups. Envoi impossible. Réessaie.',
-      invalid: 'Vérifie ton e-mail et ton message.'
+      invalid: 'Vérifie ton e-mail et ton message.',
+      ratelimit: 'Trop de tentatives. Attends quelques minutes.'
     }
   };
 
@@ -99,19 +103,21 @@
       try {
         const data = new FormData(form);
 
-        // Agrega el dominio automáticamente al subject (sirve para ver desde qué sitio llegó)
-        const currentSubject = data.get('_subject') || 'Mensaje web - Palmelita';
-        data.set('_subject', `${currentSubject} | ${location.hostname}`);
-
         const res = await fetch(form.action, {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }
         });
 
-        if (res.ok) {
+        const json = await res.json();
+
+        if (json.ok) {
           form.reset();
           toast(t.ok, 'ok');
+        } else if (json.error === 'ratelimit') {
+          toast(t.ratelimit, 'error');
+        } else if (json.error === 'invalid') {
+          toast(t.invalid, 'error');
         } else {
           toast(t.error, 'error');
         }
